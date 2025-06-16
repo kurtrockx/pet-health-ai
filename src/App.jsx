@@ -3,12 +3,14 @@ import HomePage from "./pages/HomePage";
 import SigninPage from "./pages/SigninPage";
 import SignupPage from "./pages/SignupPage";
 import PageNotFound from "./pages/PageNotFound";
+import LandingPage from "./pages/LandingPage";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/Home" element={<HomePage />} />
         <Route path="/Signin" element={<SigninPage />} />
         <Route path="/Signup" element={<SignupPage />} />
         <Route path="*" element={<PageNotFound />} />
