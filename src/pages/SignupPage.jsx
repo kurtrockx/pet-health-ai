@@ -42,7 +42,7 @@ export default function SignupPage() {
     return passwordRegex.test(password);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!validateEmail(formData.email)) {
@@ -69,8 +69,23 @@ export default function SignupPage() {
       return;
     }
 
-    console.log("Form Data:", formData);
-    // Add logic to handle form submission
+    try {
+      const res = await fetch("http://localhost:3000/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        alert("Account created successfully!");
+      } else {
+        alert(data.error || "Registration failed.");
+      }
+    } catch (err) {
+      console.error("Error:", err);
+      alert("Something went wrong.");
+    }
   };
 
   const togglePasswordVisibility = (field) => {

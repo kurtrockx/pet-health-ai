@@ -1,31 +1,57 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import petHealthLogo from "../assets/Pethealthlogo.png";
 import eyeOpenIcon from "../assets/eye.png";
 import eyeCloseIcon from "../assets/eye-off.png";
-import { Link } from "react-router-dom";
-
-import '../components/css/SignIn.css';
+import "../components/css/SignIn.css";
 
 export default function SigninPage() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:3000/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        localStorage.setItem("user", JSON.stringify(data.user));
+        navigate("/dashboard"); // or use window.location.href
+      } else {
+        alert(data.message);
+      }
+    } catch (err) {
+      console.error("Login error:", err);
+      alert("An error occurred during login.");
+    }
   };
 
   return (
     <div className="container">
       <div className="login-form">
         <div className="logo">
-          <img src={petHealthLogo} alt="Pet Health Logo" />
+          <img src={petHealthLogo} alt="PetHealth Logo" />
         </div>
-        <form id="loginForm">
+        <form id="loginForm" onSubmit={handleSubmit}>
           <div className="form-group">
             <p>E-mail Address</p>
             <input
               type="text"
-              id="username"
-              className="form-control"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
               required
             />
@@ -33,38 +59,38 @@ export default function SigninPage() {
           </div>
           <div className="form-group">
             <p>Password</p>
-            <input
-              type={passwordVisible ? "text" : "password"}
-              id="password"
-              className="form-control"
-              placeholder="Enter your password"
-              required
-            />
-            <button
-              type="button"
-              id="passwordToggle"
-              className={`password-toggle ${passwordVisible ? "" : "hidden"}`}
-              onClick={togglePasswordVisibility}
-            >
-              {passwordVisible ? (
-                <img src={eyeCloseIcon} alt="Hide" className="eye-close" />
-              ) : (
-                <img src={eyeOpenIcon} alt="Show" className="eye-open" />
-              )}
-            </button>
+            <div className="password-input-wrapper">
+              <input
+                type={passwordVisible ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter your password"
+                required
+              />
+              <button
+                type="button"
+                id="passwordToggle"
+                className="password-toggle"
+                onClick={togglePasswordVisibility}
+              >
+                <img
+                  src={passwordVisible ? eyeCloseIcon : eyeOpenIcon}
+                  alt={passwordVisible ? "Hide" : "Show"}
+                  className={passwordVisible ? "eye-close" : "eye-open"}
+                />
+              </button>
+            </div>
             <span className="error-message" id="password-error"></span>
           </div>
           <div className="forgot-password">
-            <a href="/Frontend/ForgotPassword/ForgotPassword.html">
-              Forgot Password?
-            </a>
+            <Link to="/ForgotPassword">Forgot Password?</Link>
           </div>
-          <button type="submit" id="login-btn" className="btn">
+          <button type="submit" id="login-btn">
             Sign In
           </button>
           <div className="signup-link">
             <span>Don't have an account? </span>
-            <Link to={"/signup"}>Sign Up!</Link>
+            <Link to="/SignUp">Sign Up!</Link>
           </div>
         </form>
       </div>

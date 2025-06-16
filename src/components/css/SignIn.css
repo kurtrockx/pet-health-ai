@@ -1,63 +1,77 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
-    background-color: #203135;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+  background-color: #203135;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
 .container {
-    width: 100%;
-    max-width: 500px;
-    padding: 20px;
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .login-form {
-    background-color: #203135;
-    border-radius: 8px;
-    padding: 10px;
-    text-align: center;
+  width: 100%;
+  background-color: #203135;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .logo {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
+  width: 8rem;
+  height: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .logo img {
-    width: 200px;
-    height: auto;
+  object-fit: contain;
+  min-width: 8rem;
+  min-height: 8rem;
 }
 
 .form-group {
-    margin-bottom: 5px;
-    position: relative;
+  margin-bottom: 5px;
+  position: relative;
 }
 
 .form-group p {
-    display: block;
-    text-align: left;
-    margin-bottom: 6px;
-    font-size: 12px;
-    color: #ffffff; /* or a lighter color for contrast on dark background */
-    font-weight: 500;
+  display: block;
+  text-align: left;
+  margin-bottom: 6px;
+  font-size: 12px;
+  color: #ffffff; /* or a lighter color for contrast on dark background */
+  font-weight: 500;
 }
 
 input {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f0f0f0;
-    color: #000000;
-    font-size: 12px;
-    transition: border-color 0.3s;
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  color: #000000;
+  font-size: 12px;
+  transition: border-color 0.3s;
 }
 
 /*input:focus {
@@ -66,130 +80,141 @@ input {
 } */
 
 .error-message {
-    color: #ff5252;
-    font-size: 12px;
-    text-align: left;
-    display: block;
-    margin-top: 5px;
-    height: 15px;
+  color: #ff5252;
+  font-size: 12px;
+  text-align: left;
+  display: block;
+  margin-top: 5px;
+  height: 15px;
 }
 
-        .password-container {
-            position: relative;
-            width: 100%;
-        }
+.password-container {
+  position: relative;
+  width: 100%;
+}
 
-        .password-toggle {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            color: #666;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 30px;
-            height: 30px;
-            background-color: transparent;
-            border: none;
-            outline: none;
-            z-index: 10;
-        }
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  z-index: 10;
+}
 
-        .password-toggle img {
-            width: 18px;
-            height: 18px;
-            opacity: 0.7;
-            transition: opacity 0.2s;
-        }
+.password-toggle img {
+  width: 18px;
+  height: 18px;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
 
-        .password-toggle:hover img {
-            opacity: 1;
-        }
+.password-toggle:hover img {
+  opacity: 1;
+}
 
-        .password-toggle.hidden img.eye-close {
-            display: inline;
-        }
+.password-toggle.hidden img.eye-close {
+  display: inline;
+}
 
-        .password-toggle.hidden img.eye-open {
-            display: none;
-        }
+.password-toggle.hidden img.eye-open {
+  display: none;
+}
 
-        .password-toggle.visible img.eye-close {
-            display: none;
-        }
+.password-toggle.visible img.eye-close {
+  display: none;
+}
 
-        .password-toggle.visible img.eye-open {
-            display: inline;
-        }
+.password-toggle.visible img.eye-open {
+  display: inline;
+}
 
-        /* Fix input padding to avoid text overlapping with icon */
-        .password-container input[type="password"],
-        .password-container input[type="text"] {
-            padding-right: 40px;
-        }
+/* Fix input padding to avoid text overlapping with icon */
+.password-container input[type="password"],
+.password-container input[type="text"] {
+  padding-right: 40px;
+}
 
 .forgot-password {
-    text-align: right;
-    margin-bottom: 10px;
+  text-align: right;
+  margin-bottom: 10px;
 }
 
 .forgot-password a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 12px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 12px;
 }
 
 .forgot-password a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 button {
-    width: 100%;
-    padding: 12px;
-    background-color: #5ab29f;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  width: 100%;
+  padding: 12px;
+  background-color: #5ab29f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-#login-btn:hover{
-    background-color: #468f7a;
+#login-btn:hover {
+  background-color: #468f7a;
 }
 
 .shake {
-    animation: shake 0.10s;
+  animation: shake 0.1s;
 }
 
 .signup-link {
-    margin-top: 25px;
-    text-align: center;
-    font-size: 14px;
-    color: #ffffff;
+  margin-top: 25px;
+  text-align: center;
+  font-size: 14px;
+  color: #ffffff;
 }
 
 .signup-link a {
-    color: #eff7ff;
-    text-decoration: none;
-    font-weight: bold;
+  color: #eff7ff;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 .signup-link a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 @keyframes shake {
-    0%, 100% {
-        transform: translateX(0);
-    }
-    10%, 30%, 50%, 70%, 90% {
-        transform: translateX(-5px);
-    }
-    20%, 40%, 60%, 80% {
-        transform: translateX(5px);
-    }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-5px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(5px);
+  }
+}
+#loginForm {
+  min-width: 30rem;
 }
