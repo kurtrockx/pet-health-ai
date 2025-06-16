@@ -48,7 +48,6 @@ body {
 .logo {
   display: flex;
   align-items: center;
-  margin-bottom: 40px;
 }
 
 .logo img {
