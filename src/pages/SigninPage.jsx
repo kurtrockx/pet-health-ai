@@ -4,7 +4,7 @@ import eyeOpenIcon from "../assets/eye.png";
 import eyeCloseIcon from "../assets/eye-off.png";
 import { Link } from "react-router-dom";
 
-import '../components/css/SignIn.css'
+import '../components/css/SignIn.css';
 
 export default function SigninPage() {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -25,6 +25,7 @@ export default function SigninPage() {
             <input
               type="text"
               id="username"
+              className="form-control"
               placeholder="Enter your email"
               required
             />
@@ -35,13 +36,14 @@ export default function SigninPage() {
             <input
               type={passwordVisible ? "text" : "password"}
               id="password"
+              className="form-control"
               placeholder="Enter your password"
               required
             />
             <button
               type="button"
               id="passwordToggle"
-              className="password-toggle"
+              className={`password-toggle ${passwordVisible ? "" : "hidden"}`}
               onClick={togglePasswordVisibility}
             >
               {passwordVisible ? (
@@ -57,7 +59,7 @@ export default function SigninPage() {
               Forgot Password?
             </a>
           </div>
-          <button type="submit" id="login-btn">
+          <button type="submit" id="login-btn" className="btn">
             Sign In
           </button>
           <div className="signup-link">

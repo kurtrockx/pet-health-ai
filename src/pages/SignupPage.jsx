@@ -4,7 +4,6 @@ import catMascot from "../assets/Catmascot.png";
 import eyeOpen from "../assets/eye.png";
 import eyeClose from "../assets/eye-off.png";
 import { Link } from "react-router-dom";
-
 import "../components/css/SignUp.css";
 
 export default function SignupPage() {
@@ -229,8 +228,8 @@ export default function SignupPage() {
                 />
               </button>
             </div>
-            <div className="form-group">
-              <label>
+            <div className="checkbox-group">
+              <div className="checkbox">
                 <input
                   type="checkbox"
                   name="termsAccepted"
@@ -238,11 +237,11 @@ export default function SignupPage() {
                   onChange={handleChange}
                   required
                 />
-                I agree to the <a href="/terms">Terms and Services</a>.
-              </label>
-            </div>
-            <div className="form-group">
-              <label>
+                <label>
+                  I agree to the <a href="/terms">Terms and Services</a>.
+                </label>
+              </div>
+              <div className="checkbox">
                 <input
                   type="checkbox"
                   name="privacyAccepted"
@@ -250,8 +249,10 @@ export default function SignupPage() {
                   onChange={handleChange}
                   required
                 />
-                I agree to the <a href="/privacy">Privacy Policy</a>.
-              </label>
+                <label>
+                  I agree to the <a href="/privacy">Privacy Policy</a>.
+                </label>
+              </div>
             </div>
             <button type="submit" className="btn-primary">
               Continue
