@@ -1,0 +1,32 @@
+/* CSS Variables */
+:root {
+  --primary-color: #62ddbe;
+  --secondary-color: #4a9d7f;
+  --accent-color: #ff7e5f;
+  --bg-color: #203135;
+  --card-bg: #2a3d42;
+  --text-light: #ffffff;
+  --text-muted: #b0c4cb;
+  --border-color: #3a5055;
+  --hover-bg: #62ddbe1a;
+  --success-color: #62ddbe;
+  --warning-color: #ffc107;
+  --danger-color: #ff6b6b;
+  --border-radius: 12px;
+  --box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-light);
+  line-height: 1.6;
+}

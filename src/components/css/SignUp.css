@@ -1,0 +1,507 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --primary-color: #5ab29f;
+  --primary-dark: #4a9e8c;
+  --secondary-color: #f6b47c;
+  --dark-bg: #203135;
+  --light-gray: #a7a7a7;
+  --form-bg: #e1e1e1;
+  --error-color: #e74c3c;
+}
+
+/* Base Layout */
+body {
+  background-color: var(--dark-bg);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  overflow: hidden;
+}
+#root {
+  width: 100%;
+  background: red;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  height: 90vh;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Left Section Styles */
+.left-section {
+  background-color: var(--dark-bg);
+  color: white;
+  width: 35%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.logo img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.logo h1 {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+}
+
+.welcome-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.welcome-content h2 {
+  font-size: 2.5rem;
+  color: var(--secondary-color);
+  margin-bottom: 20px;
+}
+
+.welcome-content p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.mascot {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: right;
+}
+
+.mascot img {
+  max-width: 100%;
+  max-height: 450px;
+}
+
+/* Right Section Styles */
+.right-section {
+  background-color: var(--form-bg);
+  width: 65%;
+  padding: 35px;
+  overflow-y: auto;
+}
+
+.form-container {
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+  font-size: 1.8rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 5px;
+}
+
+.form-group {
+  margin-bottom: 2px;
+  flex: 1;
+}
+
+.form-group.small {
+  flex: 0.4;
+}
+
+/* Style for the Ext. dropdown */
+.form-group.small select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 12px;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
+}
+
+.form-group.small select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 12px;
+  color: #555;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.error-message {
+  display: block;
+  color: var(--error-color);
+  font-size: 12px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  min-height: 15px;
+}
+
+.password-container {
+  position: relative;
+  width: 100%;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  z-index: 10;
+}
+
+.password-toggle img {
+  width: 18px;
+  height: 18px;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.password-toggle:hover img {
+  opacity: 1;
+}
+
+.password-toggle.hidden img.eye-close {
+  display: inline;
+}
+
+.password-toggle.hidden img.eye-open {
+  display: none;
+}
+
+.password-toggle.visible img.eye-close {
+  display: none;
+}
+
+.password-toggle.visible img.eye-open {
+  display: inline;
+}
+
+/* Fix input padding to avoid text overlapping with icon */
+.password-container input[type="password"],
+.password-container input[type="text"] {
+  padding-right: 40px;
+}
+
+.checkbox-group {
+  margin-bottom: 15px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox input[type="checkbox"] {
+  margin-right: 10px;
+  width: 16px;
+  height: 16px;
+}
+
+.checkbox label {
+  margin-bottom: 0;
+}
+
+.checkbox a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.checkbox a:hover {
+  text-decoration: underline;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+}
+
+.or-divider {
+  position: relative;
+  text-align: center;
+  margin: 25px 0;
+}
+
+.or-divider::before,
+.or-divider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 42%;
+  height: 1px;
+  background-color: #ccc;
+}
+
+.or-divider::before {
+  left: 0;
+}
+
+.or-divider::after {
+  right: 0;
+}
+
+.or-divider span {
+  display: inline-block;
+  padding: 0 10px;
+  background-color: var(--form-bg);
+  position: relative;
+  z-index: 1;
+  color: var(--light-gray);
+  font-size: 0.9rem;
+}
+
+.social-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.btn-google,
+.btn-facebook {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-google:hover,
+.btn-facebook:hover {
+  background-color: #bed0d1;
+}
+
+.btn-google img,
+.btn-facebook img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.login-link a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 25px 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.modal-content h2 {
+  color: var(--primary-dark);
+  margin-bottom: 15px;
+}
+
+.modal-content p {
+  font-size: 0.95rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.5rem;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: var(--primary-color);
+}
+
+/* Modal Button Styles */
+.modal-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.btn-agree {
+  padding: 10px 25px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-agree:hover {
+  background-color: var(--primary-dark);
+}
+
+/* Disabled checkbox style */
+input[type="checkbox"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+input[type="checkbox"]:disabled + label {
+  color: #888;
+  cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .left-section,
+  .right-section {
+    width: 100%;
+    padding: 30px;
+  }
+
+  .left-section {
+    padding-bottom: 0;
+  }
+
+  .mascot {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .social-buttons {
+    flex-direction: column;
+  }
+
+  .modal-content {
+    padding: 20px;
+  }
+}
+
+/* Animation for validation errors */
+.shake {
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-5px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(5px);
+  }
+}
