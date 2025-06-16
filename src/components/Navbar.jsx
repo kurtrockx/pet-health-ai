@@ -20,9 +20,14 @@ export default function Navbar() {
           <li>
             <Link to="/profile">Profile</Link>
           </li>
-          <li>
-            <Link to="/signup">Sign Up</Link>
-          </li>
+          <button
+            onClick={() => {
+              localStorage.removeItem("user");
+              window.location.href = "/welcome";
+            }}
+          >
+            Logout
+          </button>
         </ul>
       </nav>
     </header>

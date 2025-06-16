@@ -55,7 +55,17 @@ body {
 .topbar {
   list-style: none;
   display: flex;
+  align-items: center;
   gap: 25px;
+}
+.topbar button {
+  padding: .5rem .75rem;
+  font-size: 1rem;
+  transition: all 0.25s ease;
+}
+.topbar button:hover {
+  translate: 0 -2px;
+  filter: brightness(90%);
 }
 
 .topbar a {
