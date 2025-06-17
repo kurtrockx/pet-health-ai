@@ -127,8 +127,11 @@ export default function SignupPage() {
           <form id="signupForm" onSubmit={handleSubmit}>
             <div className="form-row">
               <div className="form-group">
-                <label htmlFor="lastName">Last Name*</label>
+                <label className="font-[12px] text-[#555]" htmlFor="lastName">
+                  Last Name*
+                </label>
                 <input
+                  className="border border-[#ccc]"
                   type="text"
                   id="lastName"
                   name="lastName"
@@ -138,8 +141,11 @@ export default function SignupPage() {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="firstName">First Name*</label>
+                <label className="font-[12px] text-[#555]" htmlFor="firstName">
+                  First Name*
+                </label>
                 <input
+                  className="border border-[#ccc]"
                   type="text"
                   id="firstName"
                   name="firstName"
@@ -149,8 +155,11 @@ export default function SignupPage() {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="middleName">Middle Name</label>
+                <label className="font-[12px] text-[#555]" htmlFor="middleName">
+                  Middle Name
+                </label>
                 <input
+                  className="border border-[#ccc]"
                   type="text"
                   id="middleName"
                   name="middleName"
@@ -159,7 +168,9 @@ export default function SignupPage() {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="ext">Ext.</label>
+                <label className="font-[12px] text-[#555]" htmlFor="ext">
+                  Ext.
+                </label>
                 <select
                   id="ext"
                   name="ext"
@@ -178,7 +189,9 @@ export default function SignupPage() {
               </div>
             </div>
             <div className="form-group">
-              <label htmlFor="email">Email Address*</label>
+              <label className="font-[12px] text-[#555]" htmlFor="email">
+                Email Address*
+              </label>
               <input
                 type="email"
                 id="email"
@@ -186,10 +199,13 @@ export default function SignupPage() {
                 value={formData.email}
                 onChange={handleChange}
                 required
+                className="border border-[#ccc]"
               />
             </div>
             <div className="form-group">
-              <label htmlFor="username">Username*</label>
+              <label className="font-[12px] text-[#555]" htmlFor="username">
+                Username*
+              </label>
               <input
                 type="text"
                 id="username"
@@ -197,12 +213,16 @@ export default function SignupPage() {
                 value={formData.username}
                 onChange={handleChange}
                 required
+                className="border border-[#ccc]"
               />
             </div>
             <div className="form-group">
-              <label htmlFor="password">Password*</label>
+              <label className="font-[12px] text-[#555]" htmlFor="password">
+                Password*
+              </label>
               <div className="password-container">
                 <input
+                  className="border border-[#ccc]"
                   type={passwordVisible ? "text" : "password"}
                   id="password"
                   name="password"
@@ -223,7 +243,12 @@ export default function SignupPage() {
               </div>
             </div>
             <div className="form-group"></div>
-            <label htmlFor="confirmPassword">Confirm Password*</label>
+            <label
+              className="font-[12px] text-[#555]"
+              htmlFor="confirmPassword"
+            >
+              Confirm Password*
+            </label>
             <div className="password-container">
               <input
                 type={confirmPasswordVisible ? "text" : "password"}
@@ -232,6 +257,7 @@ export default function SignupPage() {
                 value={formData.confirmPassword}
                 onChange={handleChange}
                 required
+                className="border border-[#ccc]"
               />
               <button
                 type="button"
@@ -247,25 +273,27 @@ export default function SignupPage() {
             <div className="checkbox-group">
               <div className="checkbox">
                 <input
+                  className="border border-[#ccc]"
                   type="checkbox"
                   name="termsAccepted"
                   checked={formData.termsAccepted}
                   onChange={handleChange}
                   required
                 />
-                <label>
+                <label className="font-[12px] text-[#555]">
                   I agree to the <a href="/terms">Terms and Services</a>.
                 </label>
               </div>
               <div className="checkbox">
                 <input
+                  className="border border-[#ccc]"
                   type="checkbox"
                   name="privacyAccepted"
                   checked={formData.privacyAccepted}
                   onChange={handleChange}
                   required
                 />
-                <label>
+                <label className="font-[12px] text-[#555]">
                   I agree to the <a href="/privacy">Privacy Policy</a>.
                 </label>
               </div>

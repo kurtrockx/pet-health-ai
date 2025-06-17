@@ -55,6 +55,7 @@ export default function SigninPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
                 required
+                className="bg-white text-black"
               />
               <span className="error-message" id="username-error"></span>
             </div>
@@ -67,6 +68,7 @@ export default function SigninPage() {
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter your password"
                   required
+                  className="bg-white text-black"
                 />
                 <button
                   type="button"
