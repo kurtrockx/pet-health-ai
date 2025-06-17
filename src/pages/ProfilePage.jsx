@@ -269,7 +269,7 @@ const ProfilePage = () => {
           </div>
 
           <div
-            className="border border-[#6ddec0] text-[#6ddec0] hover:bg-[#6ddec0] hover:text-black duration-200 hover:scale-105 cursor-pointer rounded-xl w-fit px-4 py-3 text-sm mt-4"
+            className="border border-[#6ddec0] text-[#6ddec0] hover:bg-[#6ddec0] hover:text-black duration-200 hover:-translate-y-1 cursor-pointer rounded-xl w-fit px-4 py-3 text-sm mt-4"
             onClick={() => setShowModal(true)}
           >
             + Add Pet
@@ -281,7 +281,7 @@ const ProfilePage = () => {
             onClick={() => {
               setShowProfileModal(true);
             }}
-            className="text-[#203135] bg-[#6ddec0] rounded-xl text-center py-3 font-bold text-sm duration-200 hover:scale-105 cursor-pointer"
+            className="text-[#203135] bg-[#6ddec0] rounded-xl text-center py-3 font-bold text-sm duration-200 hover:-translate-y-1 cursor-pointer"
           >
             Edit Profile
           </div>
@@ -314,7 +314,10 @@ const ProfilePage = () => {
               <>
                 <div className="flex justify-between items-center">
                   <div className="text-2xl font-bold">My Pets</div>
-                  <div onClick={() => setManage(m => !m)} className="border border-[#6ddec0] text-[#6ddec0] py-2 px-4 text-xs rounded-2xl hover:bg-[#6ddec0] duration-200 hover:text-[#2b3d42] cursor-pointer hover:-translate-y-1 font-medium">
+                  <div
+                    onClick={() => setManage((m) => !m)}
+                    className="border border-[#6ddec0] text-[#6ddec0] py-2 px-4 text-xs rounded-2xl hover:bg-[#6ddec0] duration-200 hover:text-[#2b3d42] cursor-pointer hover:-translate-y-1 font-medium"
+                  >
                     Manage
                   </div>
                 </div>
@@ -328,7 +331,7 @@ const ProfilePage = () => {
                         highlightedPet === pet.petName
                           ? "border-[#fb7a61] shadow-[0_0_1rem_#fb7a61]"
                           : "border-[#3b5055]"
-                      } bg-[#213135] text-sm relative`}
+                      } bg-[#213135] text-sm relative hover:border-[#6ddec0] duration-400`}
                     >
                       {manage && (
                         <div className="flex justify-end right-2 top-2 absolute mt-3 gap-2">
