@@ -271,8 +271,6 @@ body {
 
 /* Chat Messages */
 .chat-messages {
-  flex: 1;
-  padding: 12px 0;
   overflow-y: auto; /* Only chat messages scroll */
   min-height: 0; /* Allow flex item to shrink */
 }
@@ -487,6 +485,7 @@ body {
   .chat-container {
     padding: 0 16px;
     width: 100%;
+    min-height: 90vh;
   }
 
   .welcome-section h1 {

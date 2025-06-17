@@ -43,37 +43,46 @@ export default function ChatPage() {
     }
   };
 
-  const startNewChat = () => {
-    if (chatStarted && currentChatId) {
-      saveChatToHistory();
+  const saveChatToHistory = async () => {
+    console.log("Saving chat..."); // ✅
+    if (!chatStarted || !currentChatId || messages.length === 0) return;
+
+    const now = new Date().toISOString();
+
+    const chatData = {
+      chatId: currentChatId,
+      title: messages[0]?.content || "New Chat",
+      messages,
+      createdAt: now, // ✅ match schema
+      updatedAt: now, // ✅ match schema
+    };
+
+    try {
+      await fetch("http://localhost:3000/api/saveChat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(chatData),
+      });
+
+      await loadChatHistory(); // refresh sidebar after saving
+    } catch (err) {
+      console.error("Failed to save chat:", err);
     }
+  };
+
+  const startNewChat = async () => {
+    if (chatStarted && currentChatId && messages.length > 0) {
+      await saveChatToHistory(); // <-- wait for it to complete
+    }
+
     setChatStarted(false);
     setCurrentChatId(null);
     setMessages([]);
-    initializeChat(); // ← ADD THIS LINE
-  };
-
-  const saveChatToHistory = () => {
-    if (!chatStarted || !currentChatId) return;
-
-    const chatData = {
-      id: currentChatId,
-      title: messages[0]?.content || "New Chat",
-      messages: messages,
-      timestamp: new Date().toISOString(),
-      lastUpdated: new Date().toLocaleString(),
-    };
-
-    setChatHistory((prevHistory) => {
-      const updatedHistory = prevHistory.filter(
-        (chat) => chat.id !== currentChatId
-      );
-      return [chatData, ...updatedHistory.slice(0, 19)];
-    });
+    initializeChat();
   };
 
   const loadChatFromHistory = (chatId) => {
-    const chat = chatHistory.find((c) => c.id === chatId);
+    const chat = chatHistory.find((c) => c.chatId === chatId); // ✅ corrected
     if (!chat) return;
 
     if (chatStarted && currentChatId && currentChatId !== chatId) {
@@ -104,9 +113,11 @@ export default function ChatPage() {
 
     return chatHistory.map((chat) => (
       <div
-        key={chat.id}
-        className={`history-item ${chat.id === currentChatId ? "active" : ""}`}
-        onClick={() => loadChatFromHistory(chat.id)}
+        key={chat.chatId}
+        className={`history-item ${
+          chat.chatId === currentChatId ? "active" : ""
+        }`}
+        onClick={() => loadChatFromHistory(chat.chatId)}
       >
         <div className="history-item-title">{chat.title}</div>
         <div className="history-item-time">{chat.lastUpdated}</div>
@@ -114,133 +125,133 @@ export default function ChatPage() {
     ));
   };
 
-const sendMessage = async () => {
-  if (!messageInput.trim()) return;
+  const sendMessage = async () => {
+    if (!messageInput.trim()) return;
 
-  if (!chatStarted) {
-    setCurrentChatId(`chat_${Date.now()}`);
-    setChatStarted(true);
-  }
-
-  const userMessage = {
-    content: messageInput.trim(),
-    sender: "user",
-    time: new Date().toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit",
-    }),
-  };
-
-  setMessages((prev) => [...prev, userMessage]);
-  setMessageInput("");
-  setTypingIndicatorVisible(true);
-
-  const response = await fetchLlamaResponse(userMessage.content);
-
-  if (response && response.trim() !== "") {
-    const botMessage = {
-      content: response,
-      sender: "bot",
-      time: new Date().toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-      }),
-    };
-    setMessages((prev) => [...prev, botMessage]);
-  }
-
-  setTypingIndicatorVisible(false);
-  saveChatToHistory();
-  };
-  
-const fetchLlamaResponse = async (userMessage) => {
-  try {
-    const response = await fetch("http://localhost:11434/api/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model: "llama3",
-        messages: [
-          ...messages.map((m) => ({
-            role: m.sender === "user" ? "user" : "assistant",
-            content: m.content,
-          })),
-          { role: "user", content: userMessage },
-        ],
-        stream: true,
-      }),
-    });
-
-    if (!response.body) {
-      throw new Error("No response body");
+    if (!chatStarted) {
+      setCurrentChatId(`chat_${Date.now()}`);
+      setChatStarted(true);
     }
 
-    const reader = response.body.getReader();
-    const decoder = new TextDecoder("utf-8");
-    let fullResponse = "";
-
-    // Temporarily show typing response in real-time
-    const botMessage = {
-      content: "",
-      sender: "bot",
+    const userMessage = {
+      content: messageInput.trim(),
+      sender: "user",
       time: new Date().toLocaleTimeString([], {
         hour: "2-digit",
         minute: "2-digit",
       }),
     };
-    setMessages((prev) => [...prev, botMessage]);
 
-    const readChunk = async () => {
-      const { done, value } = await reader.read();
-      if (done) {
-        setTypingIndicatorVisible(false);
-        saveChatToHistory(); // Optionally move this inside sendMessage if needed
-        return;
-      }
+    setMessages((prev) => [...prev, userMessage]);
+    setMessageInput("");
+    setTypingIndicatorVisible(true);
 
-      const chunk = decoder.decode(value, { stream: true });
-      const lines = chunk.split("\n").filter(Boolean);
+    const response = await fetchLlamaResponse(userMessage.content);
 
-      for (const line of lines) {
-        try {
-          const json = JSON.parse(line);
-          if (json.done) break;
-          fullResponse += json.message?.content || "";
-
-          // Update the last message's content
-          setMessages((prevMessages) => {
-            const updated = [...prevMessages];
-            updated[updated.length - 1] = {
-              ...updated[updated.length - 1],
-              content: fullResponse,
-            };
-            return updated;
-          });
-        } catch (err) {
-          console.error("Parse error", err, line);
-        }
-      }
-
-      return readChunk();
-    };
-
-    return readChunk();
-  } catch (error) {
-    console.error("Error streaming LLaMA3 response:", error);
-    setTypingIndicatorVisible(false);
-    setMessages((prevMessages) => [
-      ...prevMessages,
-      {
-        content: "Something went wrong while getting a response.",
+    if (response && response.trim() !== "") {
+      const botMessage = {
+        content: response,
         sender: "bot",
         time: new Date().toLocaleTimeString([], {
           hour: "2-digit",
           minute: "2-digit",
         }),
-      },
-    ]);
-  }
-};
+      };
+      setMessages((prev) => [...prev, botMessage]);
+    }
+
+    setTypingIndicatorVisible(false);
+    saveChatToHistory();
+  };
+
+  const fetchLlamaResponse = async (userMessage) => {
+    try {
+      const response = await fetch("http://localhost:11434/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          model: "llama3",
+          messages: [
+            ...messages.map((m) => ({
+              role: m.sender === "user" ? "user" : "assistant",
+              content: m.content,
+            })),
+            { role: "user", content: userMessage },
+          ],
+          stream: true,
+        }),
+      });
+
+      if (!response.body) {
+        throw new Error("No response body");
+      }
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder("utf-8");
+      let fullResponse = "";
+
+      // Temporarily show typing response in real-time
+      const botMessage = {
+        content: "",
+        sender: "bot",
+        time: new Date().toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
+      };
+      setMessages((prev) => [...prev, botMessage]);
+
+      const readChunk = async () => {
+        const { done, value } = await reader.read();
+        if (done) {
+          setTypingIndicatorVisible(false);
+          saveChatToHistory(); // Optionally move this inside sendMessage if needed
+          return;
+        }
+
+        const chunk = decoder.decode(value, { stream: true });
+        const lines = chunk.split("\n").filter(Boolean);
+
+        for (const line of lines) {
+          try {
+            const json = JSON.parse(line);
+            if (json.done) break;
+            fullResponse += json.message?.content || "";
+
+            // Update the last message's content
+            setMessages((prevMessages) => {
+              const updated = [...prevMessages];
+              updated[updated.length - 1] = {
+                ...updated[updated.length - 1],
+                content: fullResponse,
+              };
+              return updated;
+            });
+          } catch (err) {
+            console.error("Parse error", err, line);
+          }
+        }
+
+        return readChunk();
+      };
+
+      return readChunk();
+    } catch (error) {
+      console.error("Error streaming LLaMA3 response:", error);
+      setTypingIndicatorVisible(false);
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        {
+          content: "Something went wrong while getting a response.",
+          sender: "bot",
+          time: new Date().toLocaleTimeString([], {
+            hour: "2-digit",
+            minute: "2-digit",
+          }),
+        },
+      ]);
+    }
+  };
   return (
     <div>
       <Navbar />
