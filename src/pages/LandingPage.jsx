@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import sideLogoBar from "../assets/sidelogobar.png";
 import welcomePagePic from "../assets/welcomepagepic.png";
 
@@ -25,7 +26,7 @@ export default function LandingPage() {
           <h1>Your AI-Powered Pet Care Companion</h1>
           <p>Smart, instant, and reliable pet health advice — anytime, anywhere. Let AI help you care for your pets with expert guidance, first-aid tips, and health monitoring.</p>
           <div className="hero-buttons">
-            <a href="/Frontend/SignIn/SignIn.html" className="btn primary">Chat Now</a>
+            <Link to={'/signin'} className="btn primary">Chat Now</Link>
             <a href="#features" className="btn secondary">Explore Features</a>
           </div>
         </div>

@@ -29,7 +29,7 @@ export default function SigninPage() {
 
       if (data.success) {
         localStorage.setItem("user", JSON.stringify(data.user));
-        navigate("/dashboard"); // or use window.location.href
+        navigate("/home"); // or use window.location.href
       } else {
         alert(data.message);
       }
@@ -90,7 +90,7 @@ export default function SigninPage() {
           </button>
           <div className="signup-link">
             <span>Don't have an account? </span>
-            <Link to="/SignUp">Sign Up!</Link>
+            <Link to="/signup">Sign Up!</Link>
           </div>
         </form>
       </div>

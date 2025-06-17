@@ -6,7 +6,7 @@ export default function Navbar() {
     <header>
       <nav className="navbar">
         <div className="logo">
-          <Link to="/welcome">
+          <Link to="/home">
             <img src={petHealthLogo} alt="PetHealth AI Logo" />
           </Link>
         </div>
@@ -23,7 +23,7 @@ export default function Navbar() {
           <button
             onClick={() => {
               localStorage.removeItem("user");
-              window.location.href = "/welcome";
+              window.location.href = "/";
             }}
           >
             Logout
