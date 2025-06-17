@@ -146,46 +146,48 @@ export default function ChatPage() {
     ));
   };
 
-const sendMessage = async (preset = null) => {
-  const input = preset || messageInput.trim();
-  if (!input) return;
+  const sendMessage = async (preset = null) => {
+    const input = preset || messageInput.trim();
+    if (!input) return;
 
-  // Ensure chat ID and state are set before adding message
-  if (!chatStarted) {
-    setCurrentChatId(`chat_${Date.now()}`);
-    setChatStarted(true);
-  }
+    // Ensure chat ID and state are set before adding message
+    if (!chatStarted) {
+      setCurrentChatId(`chat_${Date.now()}`);
+      setChatStarted(true);
+    }
 
-  const userMessage = {
-    content: input,
-    sender: "user",
-    time: new Date().toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit",
-    }),
-  };
-
-  setMessages((prev) => [...prev, userMessage]);
-  if (!preset) setMessageInput("");
-  setTypingIndicatorVisible(true);
-
-  const response = await fetchLlamaResponse(userMessage.content);
-
-  if (response && response.trim() !== "") {
-    const botMessage = {
-      content: response,
-      sender: "bot",
+    const userMessage = {
+      content: input,
+      sender: "user",
       time: new Date().toLocaleTimeString([], {
         hour: "2-digit",
         minute: "2-digit",
       }),
     };
-    setMessages((prev) => [...prev, botMessage]);
-  }
 
-  setTypingIndicatorVisible(false);
-  saveChatToHistory();
-};
+    setMessages((prev) => [...prev, userMessage]);
+    if (!preset) setMessageInput("");
+    setTypingIndicatorVisible(true);
+
+    const response = await fetchLlamaResponse(
+      `Answer as Tailo, the AI Chatbot for the 'Pet Health System" who provides first aid information on the user's issue regarding their pets. If there is a condition mentioned that is too severe, tell the user to visit the closest vet clinic as soon as possible. The following is the user's message: ${userMessage.content}. Keep your response and concise as you can, with a maximum of 5 sentences only. Start each reply as Tailo: Message Content.`
+    );
+
+    if (response && response.trim() !== "") {
+      const botMessage = {
+        content: response,
+        sender: "bot",
+        time: new Date().toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
+      };
+      setMessages((prev) => [...prev, botMessage]);
+    }
+
+    setTypingIndicatorVisible(false);
+    saveChatToHistory();
+  };
   const fetchLlamaResponse = async (userMessage) => {
     try {
       const response = await fetch("http://localhost:11434/api/chat", {

@@ -5,6 +5,7 @@ import SignupPage from "./pages/SignupPage";
 import PageNotFound from "./pages/PageNotFound";
 import LandingPage from "./pages/LandingPage";
 import ChatPage from "./pages/ChatPage";
+import ProfilePage from "./pages/ProfilePage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/Signin" element={<SigninPage />} />
         <Route path="/Signup" element={<SignupPage />} />
         <Route path="/Chat" element={<ChatPage />} />
+        <Route path="/Profile" element={<ProfilePage />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>

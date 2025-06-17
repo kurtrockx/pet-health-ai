@@ -1,7 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import petHealthLogo from "../assets/sidelogobar.png";
 
 export default function Navbar() {
+  const loggedInUser = localStorage.getItem("user");
+  const navigate = useNavigate();
+
+  function gotoSignin() {
+    navigate("/signin");
+  }
+
+  function handleLogout() {
+    localStorage.removeItem("user");
+    navigate("/");
+  }
+
   return (
     <header>
       <nav className="navbar">
@@ -20,14 +32,11 @@ export default function Navbar() {
           <li>
             <Link to="/profile">Profile</Link>
           </li>
-          <button
-            onClick={() => {
-              localStorage.removeItem("user");
-              window.location.href = "/";
-            }}
-          >
-            Logout
-          </button>
+          {loggedInUser ? (
+            <button onClick={handleLogout}>Logout</button>
+          ) : (
+            <button onClick={gotoSignin}>Sign In</button>
+          )}
         </ul>
       </nav>
     </header>

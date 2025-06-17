@@ -1,10 +1,4 @@
-/* Reset & Base */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
+
 
 body {
   background-size: 300% 300%;
@@ -85,7 +79,7 @@ body {
 /* Main Content */
 .main-content {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 50px 60px;
   gap: 40px;

@@ -1,9 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
 
 body {
   background-color: #203135;
@@ -12,7 +6,13 @@ body {
   align-items: center;
   min-height: 100vh;
 }
-
+.signin-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .container {
   width: 100%;
   max-width: 500px;

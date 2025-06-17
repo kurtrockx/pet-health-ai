@@ -40,59 +40,61 @@ export default function SigninPage() {
   };
 
   return (
-    <div className="container">
-      <div className="login-form">
-        <div className="logo">
-          <img src={petHealthLogo} alt="PetHealth Logo" />
-        </div>
-        <form id="loginForm" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <p>E-mail Address</p>
-            <input
-              type="text"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-              required
-            />
-            <span className="error-message" id="username-error"></span>
+    <div className="signin-container">
+      <div className="container">
+        <div className="login-form">
+          <div className="logo">
+            <img src={petHealthLogo} alt="PetHealth Logo" />
           </div>
-          <div className="form-group">
-            <p>Password</p>
-            <div className="password-input-wrapper">
+          <form id="loginForm" onSubmit={handleSubmit}>
+            <div className="form-group">
+              <p>E-mail Address</p>
               <input
-                type={passwordVisible ? "text" : "password"}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter your password"
+                type="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email"
                 required
               />
-              <button
-                type="button"
-                id="passwordToggle"
-                className="password-toggle"
-                onClick={togglePasswordVisibility}
-              >
-                <img
-                  src={passwordVisible ? eyeCloseIcon : eyeOpenIcon}
-                  alt={passwordVisible ? "Hide" : "Show"}
-                  className={passwordVisible ? "eye-close" : "eye-open"}
-                />
-              </button>
+              <span className="error-message" id="username-error"></span>
             </div>
-            <span className="error-message" id="password-error"></span>
-          </div>
-          <div className="forgot-password">
-            <Link to="/ForgotPassword">Forgot Password?</Link>
-          </div>
-          <button type="submit" id="login-btn">
-            Sign In
-          </button>
-          <div className="signup-link">
-            <span>Don't have an account? </span>
-            <Link to="/signup">Sign Up!</Link>
-          </div>
-        </form>
+            <div className="form-group">
+              <p>Password</p>
+              <div className="password-input-wrapper">
+                <input
+                  type={passwordVisible ? "text" : "password"}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Enter your password"
+                  required
+                />
+                <button
+                  type="button"
+                  id="passwordToggle"
+                  className="password-toggle"
+                  onClick={togglePasswordVisibility}
+                >
+                  <img
+                    src={passwordVisible ? eyeCloseIcon : eyeOpenIcon}
+                    alt={passwordVisible ? "Hide" : "Show"}
+                    className={passwordVisible ? "eye-close" : "eye-open"}
+                  />
+                </button>
+              </div>
+              <span className="error-message" id="password-error"></span>
+            </div>
+            <div className="forgot-password">
+              <Link to="/ForgotPassword">Forgot Password?</Link>
+            </div>
+            <button type="submit" id="login-btn">
+              Sign In
+            </button>
+            <div className="signup-link">
+              <span>Don't have an account? </span>
+              <Link to="/signup">Sign Up!</Link>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

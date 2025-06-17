@@ -17,6 +17,7 @@ export default function LandingPage() {
             <li><a href="#howitworks">How It Works</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#features">Explore Features</a></li>
+            <li><a href="/signin">Sign In</a></li>
           </ul>
         </nav>
       </header>
@@ -26,7 +27,7 @@ export default function LandingPage() {
           <h1>Your AI-Powered Pet Care Companion</h1>
           <p>Smart, instant, and reliable pet health advice — anytime, anywhere. Let AI help you care for your pets with expert guidance, first-aid tips, and health monitoring.</p>
           <div className="hero-buttons">
-            <Link to={'/signin'} className="btn primary">Chat Now</Link>
+            <Link to={'/chat'} className="btn primary">Chat Now</Link>
             <a href="#features" className="btn secondary">Explore Features</a>
           </div>
         </div>

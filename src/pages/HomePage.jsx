@@ -3,13 +3,16 @@ import "../components/css/homepage.css";
 import petHealthChar from "../assets/pethealthchar.png";
 
 export default function HomePage() {
+  const currUser = JSON.parse(localStorage.getItem("user"));
+
   return (
     <div>
       <Navbar />
       <main className="main-content">
         <div className="left-side">
           <div className="chat-bubble">
-            Hello [User name]! I'm <span className="tailo">Tailo</span>, your{" "}
+            Hello <strong>{currUser?.username || 'USER'}</strong>! I'm{" "}
+            <span className="tailo">Tailo</span>, your{" "}
             <span className="assistant">PetHealth assistant</span>. I'm here to
             help you with first-aid guidance and home remedies for your pet.
             Let's keep them happy and healthy!

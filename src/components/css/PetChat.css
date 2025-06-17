@@ -1,15 +1,10 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
 body {
   font-family: "Poppins", sans-serif;
   background-color: #203135;
   height: 100vh; /* Fixed height instead of min-height */
   color: #ffffff;
-  overflow: hidden; /* Prevent body scrolling */
+  overflow: hidden;
 }
 
 /* Floating Navbar */
@@ -55,8 +50,9 @@ body {
 
 /* Main Layout */
 .main-container {
+  padding-top: 80px; /* Add space at top so content doesn't go under navbar */
   display: flex;
-  height: 90vh;
+  height: 100vh;
   overflow: hidden; /* Prevent main container scrolling */
 }
 
@@ -78,7 +74,7 @@ body {
 
 /* Sidebar Header */
 .sidebar-header {
-  padding: 10px;
+  padding: 20px 10px 10px;
   border-bottom: 1px solid #3d565c;
   flex-shrink: 0; /* Prevent shrinking */
 }
@@ -176,6 +172,7 @@ body {
 .sidebar-toggle {
   position: fixed;
   left: 16px;
+  margin-top: 1rem;
   top: 80px;
   z-index: 1000;
   background-color: #2f484d;
@@ -185,8 +182,7 @@ body {
   width: 32px;
   height: 32px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 0;
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 14px;
@@ -204,7 +200,8 @@ body {
   flex-direction: column;
   max-width: 11000px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 2rem 20px;
+  justify-content: space-between;
   height: 100%; /* Full height */
   overflow: hidden; /* Prevent chat container scrolling */
 }
@@ -282,7 +279,10 @@ body {
 
 .message.user {
   display: flex;
-  justify-content: flex-end;
+  flex-direction: row-reverse;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  align-items: center;
 }
 
 .message.bot {
@@ -462,8 +462,7 @@ body {
   .sidebar {
     position: fixed;
     left: -280px;
-    top: 50px;
-    height: calc(100vh - 50px);
+    top: 110px;
     z-index: 1000;
     transition: left 0.3s ease;
   }
@@ -485,9 +484,11 @@ body {
   .chat-container {
     padding: 0 16px;
     width: 100%;
-    min-height: 90vh;
+    min-height: 80vh;
   }
-
+  .welcome-section {
+    max-height: 60vh;
+  }
   .welcome-section h1 {
     font-size: 2rem;
   }

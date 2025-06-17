@@ -79,6 +79,7 @@ export default function SignupPage() {
       const data = await res.json();
       if (res.ok) {
         alert("Account created successfully!");
+        window.location.href = "/signin";
       } else {
         alert(data.error || "Registration failed.");
       }
