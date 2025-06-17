@@ -1,6 +1,7 @@
 import Navbar from "../components/NavBar";
 import "../components/css/homepage.css";
 import petHealthChar from "../assets/pethealthchar.png";
+import { Link } from "react-router-dom";
 
 export default function HomePage() {
   const currUser = JSON.parse(localStorage.getItem("user"));
@@ -11,7 +12,7 @@ export default function HomePage() {
       <main className="main-content">
         <div className="left-side">
           <div className="chat-bubble">
-            Hello <strong>{currUser?.username || 'USER'}</strong>! I'm{" "}
+            Hello <strong>{currUser?.username || "USER"}</strong>! I'm{" "}
             <span className="tailo">Tailo</span>, your{" "}
             <span className="assistant">PetHealth assistant</span>. I'm here to
             help you with first-aid guidance and home remedies for your pet.
@@ -22,12 +23,12 @@ export default function HomePage() {
             have.
           </div>
           <div className="button-group">
-            <a href="/Frontend/QuickGuidance/QuickGuidance.html">
+            <Link to={"/guidance"}>
               <button>Quick Guidance</button>
-            </a>
-            <a href="/Frontend/PetChat/PetChat.html">
+            </Link>
+            <Link to={"/chat"}>
               <button>Talk with Tailo</button>
-            </a>
+            </Link>
           </div>
         </div>
         <div className="right-side">

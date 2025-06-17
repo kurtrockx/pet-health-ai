@@ -232,7 +232,7 @@ const ProfilePage = () => {
       <Navbar />
       <div className="flex gap-4 min-h-[86dvh] max-w-[1400px] relative top-20 left-1/2 -translate-x-1/2">
         <div className="flex-[1] min-w-80 px-4 py-6 bg-[#2b3d42] border border-[#3b5055] rounded-2xl">
-          <h1 className="font-semibold text-xl ">
+          <h1 className="font-semibold text-2xl ">
             {currUser ? currUser.username : "Welcome, Guest"}
           </h1>
           <p className="text-xs text-white/45">

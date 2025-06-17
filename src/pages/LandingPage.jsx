@@ -27,7 +27,7 @@ export default function LandingPage() {
           <h1>Your AI-Powered Pet Care Companion</h1>
           <p>Smart, instant, and reliable pet health advice — anytime, anywhere. Let AI help you care for your pets with expert guidance, first-aid tips, and health monitoring.</p>
           <div className="hero-buttons">
-            <Link to={'/chat'} className="btn primary">Chat Now</Link>
+            <Link to={'/signin'} className="btn primary">Chat Now</Link>
             <a href="#features" className="btn secondary">Explore Features</a>
           </div>
         </div>
