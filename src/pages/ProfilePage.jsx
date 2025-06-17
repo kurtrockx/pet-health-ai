@@ -260,7 +260,7 @@ const ProfilePage = () => {
                     <img
                       src={pet.imageUrl}
                       alt={pet.petName}
-                      className="object-contain"
+                      className="object-cover min-h-full"
                     />
                   )}
                 </div>
@@ -653,7 +653,6 @@ const ProfilePage = () => {
       )}
     </div>
   );
-  
 };
 
 export default ProfilePage;
