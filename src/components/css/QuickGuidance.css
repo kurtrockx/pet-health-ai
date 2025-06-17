@@ -106,7 +106,8 @@ body {
 .filter-tabs {
   display: flex;
   justify-content: center;
-  gap: 15px;
+  flex-wrap: wrap;
+  gap: .5rem;
   margin-bottom: 25px;
   max-width: 1200px;
   margin-left: auto;
@@ -124,6 +125,7 @@ body {
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   width: max-content;
+  font-size: .75rem;
 }
 
 .filter-tab.active,

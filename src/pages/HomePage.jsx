@@ -1,6 +1,6 @@
 import Navbar from "../components/NavBar";
 import "../components/css/homepage.css";
-import petHealthChar from "../assets/pethealthchar.png";
+import petHealthChar from "../assets/enhancedLogo.png";
 import { Link } from "react-router-dom";
 
 export default function HomePage() {

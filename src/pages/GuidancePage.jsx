@@ -105,7 +105,7 @@ const faqData = [
     id: 5,
     category: ["cats", "emergency"],
     question: "My cat is having difficulty breathing. What should I do?",
-    icon: "🫁",
+    icon: "🍃",
     preview:
       "Critical emergency information about breathing problems in cats and immediate action steps...",
     primaryCategory: "emergency",
@@ -240,6 +240,213 @@ const faqData = [
                 <p><strong>Long-term solutions:</strong> Gradual desensitization training, consult your vet about anti-anxiety medications, and maintain consistent routines to build confidence.</p>
             </div>
         `,
+  },
+  {
+    id: 11,
+    category: ["dogs", "grooming"],
+    question: "How often should I bathe my dog?",
+    icon: "🛁",
+    preview:
+      "Learn how frequently to bathe your dog based on coat type and lifestyle...",
+    primaryCategory: "grooming",
+    answer: `
+        <div class="answer-content">
+            <p><strong>General guideline:</strong> Every 4–6 weeks, but it varies by breed and activity.</p>
+            <ul class="tips-list">
+                <li>Short-haired dogs: less frequent</li>
+                <li>Long-haired breeds: every 4 weeks</li>
+                <li>Dogs with allergies or skin issues: consult your vet</li>
+            </ul>
+            <p>Always use pet-safe shampoo. Human shampoos can irritate dog skin.</p>
+        </div>
+    `,
+  },
+  {
+    id: 12,
+    category: ["cats", "nutrition"],
+    question: "Is it okay to feed my cat milk?",
+    icon: "🥛",
+    preview:
+      "Cats and milk: adorable cliché or dietary problem? Find out here...",
+    primaryCategory: "nutrition",
+    answer: `
+        <div class="answer-content">
+            <p><strong>Most adult cats are lactose intolerant.</strong></p>
+            <ul class="tips-list">
+                <li>Milk can cause diarrhea or upset stomach</li>
+                <li>If you want to offer milk, choose lactose-free pet milk</li>
+                <li>Always provide fresh water as the main drink</li>
+            </ul>
+            <p><strong>Best practice:</strong> Stick to nutritionally balanced cat food and treats.</p>
+        </div>
+    `,
+  },
+  {
+    id: 13,
+    category: ["dogs", "behavior"],
+    question: "Why does my dog eat grass?",
+    icon: "🌿",
+    preview: "Curious canine habit? Here's why dogs nibble on grass...",
+    primaryCategory: "behavior",
+    answer: `
+        <div class="answer-content">
+            <p><strong>Common reasons dogs eat grass:</strong></p>
+            <ul class="tips-list">
+                <li>Boredom or anxiety</li>
+                <li>Upset stomach (some dogs vomit after)</li>
+                <li>Seeking fiber or missing nutrients</li>
+            </ul>
+            <p>If it's frequent or accompanied by vomiting, consult your vet.</p>
+        </div>
+    `,
+  },
+  {
+    id: 14,
+    category: ["cats", "grooming"],
+    question: "How can I reduce shedding in my cat?",
+    icon: "🐾",
+    preview: "Simple grooming techniques to manage your cat’s shedding...",
+    primaryCategory: "grooming",
+    answer: `
+        <div class="answer-content">
+            <p><strong>Tips to reduce shedding:</strong></p>
+            <ul class="tips-list">
+                <li>Brush regularly (daily for long-haired cats)</li>
+                <li>Provide proper nutrition and hydration</li>
+                <li>Use deshedding tools or gloves</li>
+                <li>Consider omega-3 supplements (ask your vet)</li>
+            </ul>
+        </div>
+    `,
+  },
+  {
+    id: 15,
+    category: ["dogs", "emergency"],
+    question: "What are signs of heatstroke in dogs?",
+    icon: "🌡️",
+    preview:
+      "Critical symptoms of overheating in dogs and emergency care tips...",
+    primaryCategory: "emergency",
+    answer: `
+        <div class="answer-content">
+            <div class="emergency-note">
+                🚨 Heatstroke is a life-threatening emergency. Act quickly!
+            </div>
+            <p><strong>Warning signs:</strong></p>
+            <ul class="tips-list">
+                <li>Excessive panting or drooling</li>
+                <li>Red or pale gums</li>
+                <li>Vomiting or diarrhea</li>
+                <li>Confusion or collapse</li>
+            </ul>
+            <p><strong>Immediate action:</strong> Move to shade, apply cool (not cold) water, and seek veterinary help immediately.</p>
+        </div>
+    `,
+  },
+  {
+    id: 16,
+    category: ["cats", "behavior"],
+    question: "Why is my cat meowing excessively?",
+    icon: "📢",
+    preview: "Understand what your cat's persistent meowing could mean...",
+    primaryCategory: "behavior",
+    answer: `
+        <div class="answer-content">
+            <p><strong>Possible causes:</strong></p>
+            <ul class="tips-list">
+                <li>Hunger or thirst</li>
+                <li>Seeking attention or play</li>
+                <li>Medical issues (especially in senior cats)</li>
+                <li>Stress or boredom</li>
+                <li>Mating behavior (if unspayed/neutered)</li>
+            </ul>
+            <p>Observe patterns and consult your vet if it becomes frequent or intense.</p>
+        </div>
+    `,
+  },
+  {
+    id: 17,
+    category: ["dogs", "training"],
+    question: "How can I crate train my puppy?",
+    icon: "📦",
+    preview: "Step-by-step crate training tips for a calm and happy puppy...",
+    primaryCategory: "behavior",
+    answer: `
+        <div class="answer-content">
+            <p><strong>Crate training tips:</strong></p>
+            <ul class="tips-list">
+                <li>Make the crate a positive space with toys and treats</li>
+                <li>Never use it as punishment</li>
+                <li>Start with short periods and gradually increase time</li>
+                <li>Maintain a consistent schedule</li>
+            </ul>
+            <p><strong>Goal:</strong> The crate should be a cozy den, not a cage.</p>
+        </div>
+    `,
+  },
+  {
+    id: 18,
+    category: ["cats", "health"],
+    question: "How do I clean my cat's ears safely?",
+    icon: "🧼",
+    preview: "Gentle and effective steps to clean your cat’s ears at home...",
+    primaryCategory: "grooming",
+    answer: `
+        <div class="answer-content">
+            <p><strong>Steps to clean cat ears:</strong></p>
+            <ul class="tips-list">
+                <li>Use a vet-approved ear cleaner</li>
+                <li>Apply solution to a cotton ball (not directly in ear)</li>
+                <li>Gently wipe the outer ear — never insert anything deep</li>
+                <li>Watch for redness, odor, or discharge</li>
+            </ul>
+            <p>If your cat resists heavily or you notice inflammation, consult your vet.</p>
+        </div>
+    `,
+  },
+  {
+    id: 19,
+    category: ["dogs", "nutrition"],
+    question: "Can I give my dog bones to chew?",
+    icon: "🦴",
+    preview:
+      "Not all bones are safe! Learn the dos and don’ts of feeding bones...",
+    primaryCategory: "nutrition",
+    answer: `
+        <div class="answer-content">
+            <p><strong>Safe bone tips:</strong></p>
+            <ul class="tips-list">
+                <li>Never give cooked bones – they can splinter</li>
+                <li>Raw bones may be safer but still carry risks</li>
+                <li>Supervise chewing to prevent choking</li>
+                <li>Offer alternatives like rubber or nylon chew toys</li>
+            </ul>
+            <p>Ask your vet before introducing bones, especially for aggressive chewers.</p>
+        </div>
+    `,
+  },
+  {
+    id: 20,
+    category: ["cats", "emergency"],
+    question: "What should I do if my cat has a seizure?",
+    icon: "⚡",
+    preview:
+      "Know what actions to take if your cat experiences a seizure episode...",
+    primaryCategory: "emergency",
+    answer: `
+        <div class="answer-content">
+            <div class="emergency-note">
+                ⚠️ Stay calm. Seizures are frightening but often short. Your vet needs to evaluate the cause.
+            </div>
+            <p><strong>During a seizure:</strong></p>
+            <ul class="tips-list">
+                <li>Keep your cat away from sharp or hard objects</li>
+                <li>Don’t restrain or try to hold the cat</li>
+                <li>Time the seizure and observe symptoms</li>
+            </ul>
+            <p><strong>After the seizure:</strong> Let your cat rest and call your vet immediately.</p>
+        </div>
+    `,
   },
 ];
 
