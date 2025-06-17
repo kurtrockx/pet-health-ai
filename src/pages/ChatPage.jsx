@@ -13,18 +13,24 @@ export default function ChatPage() {
   const chatMessagesRef = useRef(null);
 
   const loadChatHistory = async () => {
-    console.log("Loading chat history...");
+    const loggedInUser = JSON.parse(localStorage.getItem("user"));
+    if (!loggedInUser?.id) return;
+
     try {
-      const response = await fetch("http://localhost:3000/api/chatHistory", {
-        method: "GET",
-        headers: { "Content-Type": "application/json" },
-      });
+      const response = await fetch(
+        `http://localhost:3000/api/chatHistory?userId=${loggedInUser.id}`,
+        {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        }
+      );
       const data = await response.json();
       setChatHistory(data.chatHistory || []);
     } catch (error) {
       console.error("Error loading chat history:", error);
     }
   };
+
   const initializeChat = () => {
     setMessageInput("");
     setTypingIndicatorVisible(false);
@@ -44,29 +50,44 @@ export default function ChatPage() {
   };
 
   const saveChatToHistory = async () => {
-    console.log("Saving chat..."); // ✅
-    if (!chatStarted || !currentChatId || messages.length === 0) return;
+    console.log("➡️ saveChatToHistory called");
+
+    if (!chatStarted || !currentChatId || messages.length === 0) {
+      console.log("⛔ Not saving: Missing conditions", {
+        chatStarted,
+        currentChatId,
+        messagesLength: messages.length,
+      });
+      return;
+    }
 
     const now = new Date().toISOString();
+    const loggedInUser = JSON.parse(localStorage.getItem("user"));
+    console.log("🔐 Logged in user:", loggedInUser);
 
     const chatData = {
       chatId: currentChatId,
       title: messages[0]?.content || "New Chat",
       messages,
-      createdAt: now, // ✅ match schema
-      updatedAt: now, // ✅ match schema
+      createdAt: now,
+      updatedAt: now,
+      userId: loggedInUser?.id,
     };
 
+    console.log("💾 Attempting to save chatData:", chatData);
+
     try {
-      await fetch("http://localhost:3000/api/saveChat", {
+      const res = await fetch("http://localhost:3000/api/saveChat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(chatData),
       });
 
-      await loadChatHistory(); // refresh sidebar after saving
+      const data = await res.json();
+      console.log("✅ Chat saved:", data);
+      await loadChatHistory(); // refresh sidebar
     } catch (err) {
-      console.error("Failed to save chat:", err);
+      console.error("❌ Failed to save chat:", err);
     }
   };
 
@@ -125,45 +146,46 @@ export default function ChatPage() {
     ));
   };
 
-  const sendMessage = async () => {
-    if (!messageInput.trim()) return;
+const sendMessage = async (preset = null) => {
+  const input = preset || messageInput.trim();
+  if (!input) return;
 
-    if (!chatStarted) {
-      setCurrentChatId(`chat_${Date.now()}`);
-      setChatStarted(true);
-    }
+  // Ensure chat ID and state are set before adding message
+  if (!chatStarted) {
+    setCurrentChatId(`chat_${Date.now()}`);
+    setChatStarted(true);
+  }
 
-    const userMessage = {
-      content: messageInput.trim(),
-      sender: "user",
+  const userMessage = {
+    content: input,
+    sender: "user",
+    time: new Date().toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    }),
+  };
+
+  setMessages((prev) => [...prev, userMessage]);
+  if (!preset) setMessageInput("");
+  setTypingIndicatorVisible(true);
+
+  const response = await fetchLlamaResponse(userMessage.content);
+
+  if (response && response.trim() !== "") {
+    const botMessage = {
+      content: response,
+      sender: "bot",
       time: new Date().toLocaleTimeString([], {
         hour: "2-digit",
         minute: "2-digit",
       }),
     };
+    setMessages((prev) => [...prev, botMessage]);
+  }
 
-    setMessages((prev) => [...prev, userMessage]);
-    setMessageInput("");
-    setTypingIndicatorVisible(true);
-
-    const response = await fetchLlamaResponse(userMessage.content);
-
-    if (response && response.trim() !== "") {
-      const botMessage = {
-        content: response,
-        sender: "bot",
-        time: new Date().toLocaleTimeString([], {
-          hour: "2-digit",
-          minute: "2-digit",
-        }),
-      };
-      setMessages((prev) => [...prev, botMessage]);
-    }
-
-    setTypingIndicatorVisible(false);
-    saveChatToHistory();
-  };
-
+  setTypingIndicatorVisible(false);
+  saveChatToHistory();
+};
   const fetchLlamaResponse = async (userMessage) => {
     try {
       const response = await fetch("http://localhost:11434/api/chat", {
