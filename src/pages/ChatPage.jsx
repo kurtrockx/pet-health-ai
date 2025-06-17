@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 
 import "../components/css/PetChat.css";
-import Navbar from "../components/NavBar";
+import Navbar from "../components/Navbar.jsx";
 
 export default function ChatPage() {
   const [chatStarted, setChatStarted] = useState(false);
@@ -170,7 +170,7 @@ export default function ChatPage() {
     setTypingIndicatorVisible(true);
 
     const response = await fetchLlamaResponse(
-      `Answer as Tailo, the AI Chatbot for the 'Pet Health System" who provides first aid information on the user's issue regarding their pets. If there is a condition mentioned that is too severe, tell the user to visit the closest vet clinic as soon as possible. The following is the user's message: ${userMessage.content}. Keep your response and concise as you can, with a maximum of 5 sentences only. Start each reply as Tailo: .`
+      `Answer as Tailo, the PetHealth AI Helper for the 'PetHealth Helper System " who provides first aid information on the user's issue regarding their pets. If there is a condition mentioned that is too severe, tell the user to visit the closest vet clinic as soon as possible. The following is the user's message: ${userMessage.content}. Keep your response and concise as you can, with a maximum of 5 sentences only. Start each reply as Tailo: .`
     );
 
     if (response && response.trim() !== "") {

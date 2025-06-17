@@ -84,7 +84,7 @@ body {
 
 /* Right Section Styles */
 .right-section {
-  background-color: var(--form-bg);
+  background-color: white;
   width: 65%;
   padding: 35px;
   overflow-y: auto;
