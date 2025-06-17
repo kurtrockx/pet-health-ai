@@ -6,6 +6,7 @@ import PageNotFound from "./pages/PageNotFound";
 import LandingPage from "./pages/LandingPage";
 import ChatPage from "./pages/ChatPage";
 import ProfilePage from "./pages/ProfilePage";
+import GuidancePage from "./pages/GuidancePage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/Signup" element={<SignupPage />} />
         <Route path="/Chat" element={<ChatPage />} />
         <Route path="/Profile" element={<ProfilePage />} />
+        <Route path="/Guidance" element={<GuidancePage />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>

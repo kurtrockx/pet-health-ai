@@ -1,12 +1,18 @@
-
 body {
   font-family: "Poppins", sans-serif;
   background-color: #203135;
   height: 100vh; /* Fixed height instead of min-height */
   color: #ffffff;
+}
+#root {
+  max-width: 100dvw;
+  max-height: 100dvh;
+}
+.chat-body {
+  width: 100%;
+  height: 100%;
   overflow: hidden;
 }
-
 /* Floating Navbar */
 .navbar {
   position: fixed;

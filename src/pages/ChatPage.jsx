@@ -277,7 +277,7 @@ export default function ChatPage() {
     }
   };
   return (
-    <div>
+    <div className="chat-body">
       <Navbar />
       <button
         className="sidebar-toggle"
