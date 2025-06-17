@@ -345,6 +345,58 @@ export default function ChatPage() {
                   <h3>🩺 Vet Guidance</h3>
                   <p>Know when professional help is needed</p>
                 </div>
+                <div
+                  className="action-card"
+                  onClick={() =>
+                    sendMessage("What vaccinations does my pet need?")
+                  }
+                >
+                  <h3>💉 Vaccination Info</h3>
+                  <p>Learn about essential vaccinations for your pet</p>
+                </div>
+                <div
+                  className="action-card"
+                  onClick={() =>
+                    sendMessage("How can I train my pet effectively?")
+                  }
+                >
+                  <h3>🐾 Training Tips</h3>
+                  <p>Get advice on training your pet</p>
+                </div>
+                <div
+                  className="action-card"
+                  onClick={() =>
+                    sendMessage("What are common signs of illness in pets?")
+                  }
+                >
+                  <h3>🩹 Illness Signs</h3>
+                  <p>Identify symptoms of common pet illnesses</p>
+                </div>
+                <div
+                  className="action-card"
+                  onClick={() => sendMessage("How do I groom my pet properly?")}
+                >
+                  <h3>🛁 Grooming Tips</h3>
+                  <p>Learn how to keep your pet clean and healthy</p>
+                </div>
+                <div
+                  className="action-card"
+                  onClick={() =>
+                    sendMessage("What should I do if my pet is injured?")
+                  }
+                >
+                  <h3>🚑 First Aid</h3>
+                  <p>Get guidance on handling pet injuries</p>
+                </div>
+                <div
+                  className="action-card"
+                  onClick={() =>
+                    sendMessage("How can I help my pet with anxiety?")
+                  }
+                >
+                  <h3>😟 Anxiety Help</h3>
+                  <p>Learn how to calm your anxious pet</p>
+                </div>
               </div>
             </div>
           )}

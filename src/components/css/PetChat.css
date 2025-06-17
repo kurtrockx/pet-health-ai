@@ -490,10 +490,10 @@ body {
   .chat-container {
     padding: 0 16px;
     width: 100%;
-    min-height: 80vh;
+    max-height: 80vh;
   }
   .welcome-section {
-    max-height: 60vh;
+    max-height: 70vh;
   }
   .welcome-section h1 {
     font-size: 2rem;
