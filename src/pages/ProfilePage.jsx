@@ -192,7 +192,7 @@ const handleSaveProfileChanges = async () => {
 
           <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {pets.length === 0 ? (
-              <p className="text-white/40 text-sm italic">No pets added yet.</p>
+              <p className="text-white/40 text-sm italic col-span-2">No pets added yet.</p>
             ) : (
               pets.map((pet) => (
                 <div
