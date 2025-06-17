@@ -5,6 +5,67 @@ const ProfilePage = () => {
   const currUser = JSON.parse(localStorage.getItem("user"));
   const [pets, setPets] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [showProfileModal, setShowProfileModal] = useState(false);
+  const [editProfile, setEditProfile] = useState({
+    firstName: currUser?.firstName || "",
+    lastName: currUser?.lastName || "",
+    currentPassword: "",
+    newPassword: "",
+    confirmPassword: "",
+  });
+
+const handleSaveProfileChanges = async () => {
+  if (editProfile.newPassword !== editProfile.confirmPassword) {
+    alert("New passwords do not match.");
+    return;
+  }
+
+  const currUser = JSON.parse(localStorage.getItem("user"));
+  if (!currUser || !currUser.id) {
+    alert("Logged-in user info missing. Please log in again.");
+    return;
+  }
+
+  try {
+    const res = await fetch("http://localhost:3000/api/updateProfile", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userId: currUser.id, // Make sure your backend expects this!
+        ...editProfile,
+      }),
+    });
+
+    if (!res.ok) {
+      const errorText = await res.text();
+      throw new Error(`Server error: ${res.status} - ${errorText}`);
+    }
+
+    const data = await res.json();
+
+    if (data && data.success && data.user) {
+      localStorage.setItem("user", JSON.stringify(data.user));
+      alert("Profile updated successfully!");
+      setShowProfileModal(false);
+      window.location.reload();
+    } else {
+      throw new Error("Invalid response from server.");
+    }
+  } catch (error) {
+    console.error("Profile update error:", error);
+    alert("Error updating profile: " + error.message);
+  }
+};
+  const handleProfileInputChange = (e) => {
+    const { name, value } = e.target;
+    setEditProfile((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
   const [petImage, setPetImage] = useState(null);
   const [petDetails, setPetDetails] = useState({
     petName: "",
@@ -164,7 +225,12 @@ const ProfilePage = () => {
 
           <div className="my-6 bg-white/20 h-[0.2px]"></div>
 
-          <div className="text-[#203135] bg-[#6ddec0] rounded-xl text-center py-3 font-bold text-sm duration-200 hover:scale-105 cursor-pointer">
+          <div
+            onClick={() => {
+              setShowProfileModal(true);
+            }}
+            className="text-[#203135] bg-[#6ddec0] rounded-xl text-center py-3 font-bold text-sm duration-200 hover:scale-105 cursor-pointer"
+          >
             Edit Profile
           </div>
         </div>
@@ -177,13 +243,13 @@ const ProfilePage = () => {
               <div className="flex-1 flex flex-col gap-2">
                 <h3 className="font-medium text-[#6ddec0]">Full Name</h3>
                 <div className="bg-[#213135] text-base px-4 py-2 rounded-lg border border-white/20">
-                  {currUser.firstName + " " + currUser.lastName}
+                  {currUser?.firstName + " " + currUser?.lastName}
                 </div>
               </div>
               <div className="flex-1 flex flex-col gap-2">
                 <h3 className="font-medium text-[#6ddec0]">Email</h3>
                 <div className="bg-[#213135] text-base px-4 py-2 rounded-lg border border-white/20">
-                  {currUser.email}
+                  {currUser?.email}
                 </div>
               </div>
             </div>
@@ -303,7 +369,9 @@ const ProfilePage = () => {
                 </select>
               </div>
 
-              <label className="text-[#6ddec0] mt-1">Upload Image (optional)</label>
+              <label className="text-[#6ddec0] mt-1">
+                Upload Image (optional)
+              </label>
               <input
                 className="border border-white/40 text-white/80 cursor-pointer hover:brightness-75"
                 type="file"
@@ -324,6 +392,91 @@ const ProfilePage = () => {
                 onClick={handleAddPet}
               >
                 Add Pet
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showProfileModal && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-[100000]">
+          <div className="p-6 rounded-lg w-[50vw] bg-[#2b3d42] max-h-[90vh] overflow-y-auto">
+            <h2 className="text-xl font-semibold mb-4">Edit Profile</h2>
+
+            <div className="flex flex-col gap-4">
+              <div className="flex flex-col">
+                <label className="text-[#6ddec0] mb-1">First Name</label>
+                <input
+                  type="text"
+                  name="firstName"
+                  value={editProfile.firstName}
+                  onChange={handleProfileInputChange}
+                  className="border border-[#3a5055] px-4 py-2 rounded-lg bg-[#213135]"
+                />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-[#6ddec0] mb-1">Last Name</label>
+                <input
+                  type="text"
+                  name="lastName"
+                  value={editProfile.lastName}
+                  onChange={handleProfileInputChange}
+                  className="border border-[#3a5055] px-4 py-2 rounded-lg bg-[#213135]"
+                />
+              </div>
+
+              <div className="my-2 border-t border-white/10"></div>
+
+              <h3 className="text-[#6ddec0] font-semibold text-lg">
+                Change Password
+              </h3>
+
+              <div className="flex flex-col">
+                <label className="text-[#6ddec0] mb-1">Current Password</label>
+                <input
+                  type="password"
+                  name="currentPassword"
+                  value={editProfile.currentPassword}
+                  onChange={handleProfileInputChange}
+                  className="border border-[#3a5055] px-4 py-2 rounded-lg bg-[#213135]"
+                />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-[#6ddec0] mb-1">New Password</label>
+                <input
+                  type="password"
+                  name="newPassword"
+                  value={editProfile.newPassword}
+                  onChange={handleProfileInputChange}
+                  className="border border-[#3a5055] px-4 py-2 rounded-lg bg-[#213135]"
+                />
+              </div>
+              <div className="flex flex-col">
+                <label className="text-[#6ddec0] mb-1">
+                  Confirm New Password
+                </label>
+                <input
+                  type="password"
+                  name="confirmPassword"
+                  value={editProfile.confirmPassword}
+                  onChange={handleProfileInputChange}
+                  className="border border-[#3a5055] px-4 py-2 rounded-lg bg-[#213135]"
+                />
+              </div>
+            </div>
+
+            <div className="flex justify-center gap-4 mt-6">
+              <div
+                className="px-4 py-2 rounded-lg border border-red-400 text-red-400 duration-200 hover:-translate-y-1 hover:text-white hover:bg-red-400 cursor-pointer"
+                onClick={() => setShowProfileModal(false)}
+              >
+                Cancel
+              </div>
+              <div
+                className="px-4 py-2 bg-[#6ddec0] rounded-lg text-[#203135] font-semibold duration-200 hover:-translate-y-1 hover:brightness-70 cursor-pointer"
+                onClick={handleSaveProfileChanges}
+              >
+                Save Changes
               </div>
             </div>
           </div>
