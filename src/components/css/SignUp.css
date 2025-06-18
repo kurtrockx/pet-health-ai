@@ -21,9 +21,8 @@ body {
 .container {
   display: flex;
   min-width: 90vw;
-  height: 90vh;
+  height: 100vh;
   border-radius: 8px;
-  overflow: hidden;
 }
 
 /* Left Section Styles */
@@ -86,6 +85,7 @@ body {
 .right-section {
   background-color: white;
   width: 65%;
+  min-height: 90vh;
   padding: 35px;
   overflow-y: auto;
 }
@@ -93,6 +93,7 @@ body {
 .form-container {
   max-width: 750px;
   margin: 0 auto;
+  height: 100%;
 }
 
 .form-container h2 {
@@ -438,7 +439,7 @@ input[type="checkbox"]:disabled + label {
 #signupForm {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.2rem;
 }
 
 /* Responsive Design */

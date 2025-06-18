@@ -127,7 +127,7 @@ export default function SignupPage() {
           <form id="signupForm" onSubmit={handleSubmit}>
             <div className="form-row">
               <div className="form-group">
-                <label className="font-[12px] text-[#555]" htmlFor="lastName">
+                <label className="text-[12px] text-[#555] max-2xl:text-xs " htmlFor="lastName">
                   Last Name*
                 </label>
                 <input
@@ -141,7 +141,7 @@ export default function SignupPage() {
                 />
               </div>
               <div className="form-group">
-                <label className="font-[12px] text-[#555]" htmlFor="firstName">
+                <label className="text-[12px] text-[#555] max-2xl:text-xs " htmlFor="firstName">
                   First Name*
                 </label>
                 <input
@@ -155,7 +155,7 @@ export default function SignupPage() {
                 />
               </div>
               <div className="form-group">
-                <label className="font-[12px] text-[#555]" htmlFor="middleName">
+                <label className="text-[12px] text-[#555] max-2xl:text-xs " htmlFor="middleName">
                   Middle Name
                 </label>
                 <input
@@ -168,7 +168,7 @@ export default function SignupPage() {
                 />
               </div>
               <div className="form-group">
-                <label className="font-[12px] text-[#555]" htmlFor="ext">
+                <label className="text-[12px] text-[#555] max-2xl:text-xs " htmlFor="ext">
                   Ext.
                 </label>
                 <select
@@ -189,7 +189,7 @@ export default function SignupPage() {
               </div>
             </div>
             <div className="form-group">
-              <label className="font-[12px] text-[#555]" htmlFor="email">
+              <label className="text-[12px] text-[#555] max-2xl:text-xs " htmlFor="email">
                 Email Address*
               </label>
               <input
@@ -203,7 +203,7 @@ export default function SignupPage() {
               />
             </div>
             <div className="form-group">
-              <label className="font-[12px] text-[#555]" htmlFor="username">
+              <label className="text-[12px] text-[#555] max-2xl:text-xs " htmlFor="username">
                 Username*
               </label>
               <input
@@ -217,7 +217,7 @@ export default function SignupPage() {
               />
             </div>
             <div className="form-group">
-              <label className="font-[12px] text-[#555]" htmlFor="password">
+              <label className="text-[12px] text-[#555] max-2xl:text-xs " htmlFor="password">
                 Password*
               </label>
               <div className="password-container">
@@ -244,7 +244,7 @@ export default function SignupPage() {
             </div>
             <div className="form-group"></div>
             <label
-              className="font-[12px] text-[#555]"
+              className="text-[12px] text-[#555] max-2xl:text-xs "
               htmlFor="confirmPassword"
             >
               Confirm Password*
@@ -280,7 +280,7 @@ export default function SignupPage() {
                   onChange={handleChange}
                   required
                 />
-                <label className="font-[12px] text-[#555]">
+                <label className="text-[12px] text-[#555] max-2xl:text-xs ">
                   I agree to the <a href="/terms">Terms and Services</a>.
                 </label>
               </div>
@@ -293,7 +293,7 @@ export default function SignupPage() {
                   onChange={handleChange}
                   required
                 />
-                <label className="font-[12px] text-[#555]">
+                <label className="text-[12px] text-[#555] max-2xl:text-xs ">
                   I agree to the <a href="/privacy">Privacy Policy</a>.
                 </label>
               </div>
