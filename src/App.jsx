@@ -1,4 +1,5 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import HomePage from "./pages/HomePage";
 import SigninPage from "./pages/SigninPage";
 import SignupPage from "./pages/SignupPage";
@@ -8,9 +9,21 @@ import ChatPage from "./pages/ChatPage";
 import ProfilePage from "./pages/ProfilePage";
 import GuidancePage from "./pages/GuidancePage";
 
+function PageTitleSetter() {
+  const location = useLocation();
+
+  useEffect(() => {
+    const route = location.pathname.replace("/", "") || "Landing";
+    document.title = `${route.charAt(0).toUpperCase() + route.slice(1)} Page`;
+  }, [location]);
+
+  return null;
+}
+
 function App() {
   return (
     <BrowserRouter>
+      <PageTitleSetter />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/Home" element={<HomePage />} />

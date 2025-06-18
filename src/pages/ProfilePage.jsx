@@ -320,7 +320,7 @@ const ProfilePage = () => {
                     onClick={() => setManage((m) => !m)}
                     className="border border-[#6ddec0] text-[#6ddec0] py-2 px-4 text-xs rounded-2xl hover:bg-[#6ddec0] duration-200 hover:text-[#2b3d42] cursor-pointer hover:-translate-y-1 font-medium"
                   >
-                    Manage
+                    {manage ? "Done" : "Manage"}
                   </div>
                 </div>
                 <div className="my-6 bg-white/20 h-[0.2px]"></div>
