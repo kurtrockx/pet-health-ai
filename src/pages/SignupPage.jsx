@@ -257,7 +257,7 @@ export default function SignupPage() {
                 value={formData.confirmPassword}
                 onChange={handleChange}
                 required
-                className="border border-[#ccc]"
+                className="border border-[#ccc] text-black"
               />
               <button
                 type="button"
