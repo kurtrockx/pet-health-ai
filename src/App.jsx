@@ -1,10 +1,4 @@
-import {
-  BrowserRouter,
-  Route,
-  Routes,
-  useLocation,
-  Navigate,
-} from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation, Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import HomePage from "./pages/HomePage";
 import SigninPage from "./pages/SigninPage";
@@ -27,27 +21,16 @@ function PageTitleSetter() {
 }
 
 function App() {
-  const isLoggedIn = localStorage.getItem("user") !== null;
-
   return (
     <BrowserRouter>
       <PageTitleSetter />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/Home" element={<HomePage />} />
-        <Route
-          path="/Signin"
-          element={isLoggedIn ? <Navigate to="/Home" /> : <SigninPage />}
-        />
-        <Route
-          path="/Signup"
-          element={isLoggedIn ? <Navigate to="/Home" /> : <SignupPage />}
-        />
-        <Route
-          path="/Profile"
-          element={isLoggedIn ? <ProfilePage /> : <Navigate to="/Signin" />}
-        />
+        <Route path="/Signin" element={<SigninPage />} />
+        <Route path="/Signup" element={<SignupPage />} />
         <Route path="/Chat" element={<ChatPage />} />
+        <Route path="/Profile" element={<ProfilePage />} />
         <Route path="/Guidance" element={<GuidancePage />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
