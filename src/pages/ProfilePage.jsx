@@ -230,8 +230,8 @@ const ProfilePage = () => {
   return (
     <div>
       <Navbar />
-      <div className="flex flex-col lg:flex-row gap-4 min-h-[86dvh] max-w-[1400px] relative top-20 left-1/2 -translate-x-1/2 px-4 lg:px-0">
-        <div className="flex-[1] min-w-80 px-4 py-6 bg-[#2b3d42] border border-[#3b5055] rounded-2xl">
+      <div className="flex flex-col lg:flex-row gap-4 h-[86dvh] max-w-[1400px] relative top-20 left-1/2 -translate-x-1/2 px-4 lg:px-0">
+        <div className="flex-[1] min-w-80 px-4 py-6  bg-[#2b3d42] border border-[#3b5055] rounded-2xl">
           <h1 className="font-semibold text-xl lg:text-2xl">
             {currUser ? currUser.username : "Welcome, Guest"}
           </h1>
@@ -275,7 +275,7 @@ const ProfilePage = () => {
             + Add Pet
           </div>
 
-          <div className="my-6 bg-white/20 h-[0.2px]"></div>
+          <div className="my-6 bg-white/20 h-[0.2px] max-2xl:my-2"></div>
 
           <div
             onClick={() => {
@@ -287,9 +287,9 @@ const ProfilePage = () => {
           </div>
         </div>
 
-        <div className="flex-[3] flex flex-col gap-4">
+        <div className="flex-[3] flex flex-col gap-4 max-2xl:gap-2">
           <div className="p-6 bg-[#2b3d42] border border-[#3b5055] rounded-2xl">
-            <h1 className="text-2xl lg:text-3xl font-semibold">
+            <h1 className="text-xl lg:text-3xl font-semibold">
               Personal Information
             </h1>
             <div className="my-3 bg-white/20 h-[0.2px]"></div>
@@ -309,7 +309,7 @@ const ProfilePage = () => {
             </div>
           </div>
 
-          <div className="bg-[#2b3d42] border border-[#3b5055] rounded-2xl h-full p-6">
+          <div className="bg-[#2b3d42] border border-[#3b5055] rounded-2xl h-full p-6 max-2xl:p-3">
             {pets.length === 0 ? (
               <p className="text-white/40 text-sm italic">No pets added yet.</p>
             ) : (
@@ -323,7 +323,7 @@ const ProfilePage = () => {
                     {manage ? "Done" : "Manage"}
                   </div>
                 </div>
-                <div className="my-6 bg-white/20 h-[0.2px]"></div>
+                <div className="my-6 bg-white/20 h-[0.2px] max-2xl:my-2"></div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                   {pets.map((pet) => (
@@ -402,9 +402,9 @@ const ProfilePage = () => {
       </div>
       {showModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-[100000]">
-          <div className="p-6 rounded-lg w-[50vw] bg-[#2b3d42] max-h-[90vh] overflow-y-auto">
-            <h2 className="text-xl font-semibold mb-4">Add Pet</h2>
-            <div className="flex flex-col gap-4">
+          <div className="p-6 max-2xl:p-4 rounded-lg w-[50vw] bg-[#2b3d42] max-h-[90vh] overflow-y-auto">
+            <h2 className="text-xl font-semibold mb-4 max-2xl:mb-1">Add Pet</h2>
+            <div className="flex flex-col gap-4 max-2xl:gap-2">
               {[
                 { label: "Pet Name", name: "petName", type: "text" },
                 { label: "Breed (optional)", name: "breed", type: "text" },
@@ -412,19 +412,23 @@ const ProfilePage = () => {
                 { label: "Weight (kg/lbs)", name: "weight", type: "number" },
               ].map(({ label, name, type }) => (
                 <div key={name} className="flex flex-col">
-                  <label className="text-[#6ddec0] mb-1">{label}</label>
+                  <label className="text-[#6ddec0] max-2xl:text-xs mb-1">
+                    {label}
+                  </label>
                   <input
                     type={type}
                     name={name}
                     value={petDetails[name]}
                     onChange={handleInputChange}
-                    className="border border-[#3a5055] px-4 py-2 rounded-lg bg-[#213135]"
+                    className="border border-[#3a5055] px-4 py-2 max-2xl:px-2 max-2xl:py-px rounded-lg bg-[#213135]"
                   />
                 </div>
               ))}
 
               <div className="flex flex-col">
-                <label className="text-[#6ddec0] mb-1">Pet Type</label>
+                <label className="text-[#6ddec0] max-2xl:text-xs mb-1">
+                  Pet Type
+                </label>
                 <select
                   name="petType"
                   value={petDetails.petType}
@@ -443,7 +447,9 @@ const ProfilePage = () => {
               </div>
 
               <div className="flex flex-col">
-                <label className="text-[#6ddec0] mb-1">Gender</label>
+                <label className="text-[#6ddec0] max-2xl:text-xs mb-1">
+                  Gender
+                </label>
                 <select
                   name="gender"
                   value={petDetails.gender}
@@ -457,7 +463,7 @@ const ProfilePage = () => {
                 </select>
               </div>
 
-              <label className="text-[#6ddec0] mt-1">
+              <label className="text-[#6ddec0] max-2xl:text-xs mt-1">
                 Upload Image (optional)
               </label>
               <input
@@ -488,38 +494,46 @@ const ProfilePage = () => {
       {showProfileModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-[100000]">
           <div className="p-6 rounded-lg w-[50vw] bg-[#2b3d42] max-h-[90vh] overflow-y-auto">
-            <h2 className="text-xl font-semibold mb-4">Edit Profile</h2>
+            <h2 className="text-xl font-semibold mb-4 max-2xl:mb-2">
+              Edit Profile
+            </h2>
 
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 max-2xl:gap-2 ">
               <div className="flex flex-col">
-                <label className="text-[#6ddec0] mb-1">First Name</label>
+                <label className="text-[#6ddec0] max-2xl:text-xs mb-1">
+                  First Name
+                </label>
                 <input
                   type="text"
                   name="firstName"
                   value={editProfile.firstName}
                   onChange={handleProfileInputChange}
-                  className="border border-[#3a5055] px-4 py-2 rounded-lg bg-[#213135]"
+                  className="border border-[#3a5055] px-4 py-2 max-2xl:px-2 max-2xl:py-1 max-2xl:text-xs rounded-lg bg-[#213135]"
                 />
               </div>
               <div className="flex flex-col">
-                <label className="text-[#6ddec0] mb-1">Last Name</label>
+                <label className="text-[#6ddec0] max-2xl:text-xs mb-1">
+                  Last Name
+                </label>
                 <input
                   type="text"
                   name="lastName"
                   value={editProfile.lastName}
                   onChange={handleProfileInputChange}
-                  className="border border-[#3a5055] px-4 py-2 rounded-lg bg-[#213135]"
+                  className="border border-[#3a5055] px-4 py-2 max-2xl:px-2 max-2xl:py-1 max-2xl:text-xs rounded-lg bg-[#213135]"
                 />
               </div>
 
-              <div className="my-2 border-t border-white/10"></div>
+              <div className="my-2 border-t max-2xl:my-1 border-white/10"></div>
 
               <h3 className="text-[#6ddec0] font-semibold text-lg">
                 Change Password
               </h3>
 
               <div className="flex flex-col">
-                <label className="text-[#6ddec0] mb-1">Current Password</label>
+                <label className="text-[#6ddec0] max-2xl:text-xs mb-1">
+                  Current Password
+                </label>
                 <input
                   type="password"
                   name="currentPassword"
@@ -529,7 +543,9 @@ const ProfilePage = () => {
                 />
               </div>
               <div className="flex flex-col">
-                <label className="text-[#6ddec0] mb-1">New Password</label>
+                <label className="text-[#6ddec0] max-2xl:text-xs mb-1">
+                  New Password
+                </label>
                 <input
                   type="password"
                   name="newPassword"
@@ -539,7 +555,7 @@ const ProfilePage = () => {
                 />
               </div>
               <div className="flex flex-col">
-                <label className="text-[#6ddec0] mb-1">
+                <label className="text-[#6ddec0] max-2xl:text-xs mb-1">
                   Confirm New Password
                 </label>
                 <input
@@ -554,13 +570,13 @@ const ProfilePage = () => {
 
             <div className="flex justify-center gap-4 mt-6">
               <div
-                className="px-4 py-2 rounded-lg border border-red-400 text-red-400 duration-200 hover:-translate-y-1 hover:text-white hover:bg-red-400 cursor-pointer"
+                className="px-4 py-2 max-2xl:px-2 max-2xl:py-1 max-2xl:text-sm rounded-lg border border-red-400 text-red-400 duration-200 hover:-translate-y-1 hover:text-white hover:bg-red-400 cursor-pointer"
                 onClick={() => setShowProfileModal(false)}
               >
                 Cancel
               </div>
               <div
-                className="px-4 py-2 bg-[#6ddec0] rounded-lg text-[#203135] font-semibold duration-200 hover:-translate-y-1 hover:brightness-70 cursor-pointer"
+                className="px-4 py-2 max-2xl:px-2 flex items-center max-2xl:py-1 max-2xl:text-xs bg-[#6ddec0] rounded-lg text-[#203135] font-semibold duration-200 hover:-translate-y-1 hover:brightness-70 cursor-pointer"
                 onClick={handleSaveProfileChanges}
               >
                 Save Changes
@@ -574,7 +590,7 @@ const ProfilePage = () => {
           <div className="p-6 rounded-lg w-[50vw] bg-[#2b3d42] max-h-[90vh] overflow-y-auto">
             <h2 className="text-xl font-semibold mb-4">Edit Pet</h2>
 
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 max-2xl:gap-2">
               {[
                 { label: "Pet Name", name: "petName", type: "text" },
                 { label: "Breed", name: "breed", type: "text" },
@@ -582,7 +598,9 @@ const ProfilePage = () => {
                 { label: "Weight", name: "weight", type: "number" },
               ].map(({ label, name, type }) => (
                 <div key={name} className="flex flex-col">
-                  <label className="text-[#6ddec0] mb-1">{label}</label>
+                  <label className="text-[#6ddec0] max-2xl:text-xs mb-1">
+                    {label}
+                  </label>
                   <input
                     type={type}
                     name={name}
@@ -596,7 +614,9 @@ const ProfilePage = () => {
               ))}
 
               <div className="flex flex-col">
-                <label className="text-[#6ddec0] mb-1">Pet Type</label>
+                <label className="text-[#6ddec0] max-2xl:text-xs mb-1">
+                  Pet Type
+                </label>
                 <select
                   name="petType"
                   value={selectedPet.petType}
@@ -617,7 +637,9 @@ const ProfilePage = () => {
               </div>
 
               <div className="flex flex-col">
-                <label className="text-[#6ddec0] mb-1">Gender</label>
+                <label className="text-[#6ddec0] max-2xl:text-xs mb-1">
+                  Gender
+                </label>
                 <select
                   name="gender"
                   value={selectedPet.gender}
