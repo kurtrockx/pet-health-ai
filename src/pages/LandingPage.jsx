@@ -78,7 +78,7 @@ export default function LandingPage() {
               </Link>
               <a
                 className="border-2 border-[#f6b47c] flex justify-center items-center px-4 py-3 text-[#f6b47c] rounded-2xl duration-200 hover:-translate-y-1 cursor-pointer hover:bg-[#f6b47c] hover:text-black"
-                href="#features"
+                href="#explore"
               >
                 Explore Features
               </a>
