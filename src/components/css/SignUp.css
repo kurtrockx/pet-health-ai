@@ -84,11 +84,21 @@ body {
 /* Right Section Styles */
 .right-section {
   background-color: white;
-  width: 65%;
-  min-height: 90vh;
-  padding: 35px;
+  min-width: 50%;
+  padding: 20px;
   overflow-y: auto;
 }
+@media screen and (max-width: 1400px) {
+  .right-section {
+    max-width: 40%;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .right-section {
+    max-width: 100%;
+  }
+}
+
 
 .form-container {
   max-width: 750px;
@@ -452,7 +462,7 @@ input[type="checkbox"]:disabled + label {
   .left-section,
   .right-section {
     width: 100%;
-    padding: 30px;
+    padding: 20px;
   }
 
   .left-section {

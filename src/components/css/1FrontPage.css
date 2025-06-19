@@ -1,14 +1,14 @@
-
 html,
-body,
-#root {
+body {
   height: 100%;
+}
+html,
+body {
   font-family: "Poppins", sans-serif;
   background: linear-gradient(to bottom, #203135, #203135);
   color: #ffffff;
   scroll-behavior: smooth;
   width: 100%;
-
 }
 
 /* Floating Navbar */
@@ -55,7 +55,6 @@ body,
 
 /* Body padding to account for fixed navbar */
 #root {
-
 }
 
 /* Hero Section */
