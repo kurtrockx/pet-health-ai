@@ -488,7 +488,7 @@ const GuidancePage = () => {
   };
 
   return (
-    <>
+    <div className="max-h-[100dvh]">
       <Navbar />
       <div className="faq-section">
         <div className="faq-header">
@@ -579,7 +579,7 @@ const GuidancePage = () => {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

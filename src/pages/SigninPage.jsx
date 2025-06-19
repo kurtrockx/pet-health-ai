@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import petHealthLogo from "../assets/Pethealthlogo.png";
 import eyeOpenIcon from "../assets/eye.png";
@@ -10,6 +10,11 @@ export default function SigninPage() {
   const [password, setPassword] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
   const navigate = useNavigate();
+
+  const currUser = localStorage.getItem("user");
+  useEffect(() => {
+    if (currUser) navigate("/home");
+  }, [currUser, navigate]);
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);

@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/NavBar";
 import React, { useState, useEffect } from "react";
 
@@ -16,6 +17,12 @@ const ProfilePage = () => {
     confirmPassword: "",
   });
   const [manage, setManage] = useState(false);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!currUser) navigate("/signin");
+  }, [currUser, navigate]);
 
   const handleSaveEdit = async () => {
     try {
@@ -228,10 +235,10 @@ const ProfilePage = () => {
   };
 
   return (
-    <div>
+    <>
       <Navbar />
-      <div className="flex flex-col lg:flex-row gap-4 h-[86dvh] max-w-[1400px] relative top-20 left-1/2 -translate-x-1/2 px-4 lg:px-0">
-        <div className="flex-[1] min-w-80 px-4 py-6  bg-[#2b3d42] border border-[#3b5055] rounded-2xl">
+      <div className="flex flex-col lg:flex-row gap-4 min-h-[86dvh] max-w-[1400px] lg:px-0 mx-auto relative top-20 xl:top-20">
+        <div className="flex-[1] min-w-80 px-4 py-6  bg-[#2b3d42] border border-[#3b5055] rounded-2xl ml-5  mt-10 mb-5">
           <h1 className="font-semibold text-xl lg:text-2xl">
             {currUser ? currUser.username : "Welcome, Guest"}
           </h1>
@@ -240,7 +247,7 @@ const ProfilePage = () => {
           </p>
           <h3 className="my-4 text-lg">My Pets</h3>
 
-          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="mt-4 grid grid-cols-4 sm:grid-cols-8 lg:grid-cols-4 gap-12">
             {pets.length === 0 ? (
               <p className="text-white/40 text-sm italic col-span-2">
                 No pets added yet.
@@ -287,22 +294,22 @@ const ProfilePage = () => {
           </div>
         </div>
 
-        <div className="flex-[3] flex flex-col gap-4 max-2xl:gap-2">
+        <div className="flex-[3] flex flex-col gap-4 max-2xl:gap-2 mr-5 mt-10 mb-5">
           <div className="p-6 bg-[#2b3d42] border border-[#3b5055] rounded-2xl">
             <h1 className="text-xl lg:text-3xl font-semibold">
               Personal Information
             </h1>
             <div className="my-3 bg-white/20 h-[0.2px]"></div>
-            <div className="flex flex-col lg:flex-row justify-between items-center gap-8 mt-6">
+            <div className="flex flex-col lg:flex-row justify-between lg:items-center gap-8 mt-6">
               <div className="flex-1 flex flex-col gap-2">
                 <h3 className="font-medium text-[#6ddec0]">Full Name</h3>
-                <div className="bg-[#213135] text-base px-4 py-2 rounded-lg border border-white/20">
+                <div className="bg-[#213135] text-base px-4 py-2 rounded-lg border border-white/20 w-full">
                   {currUser?.firstName + " " + currUser?.lastName}
                 </div>
               </div>
               <div className="flex-1 flex flex-col gap-2">
                 <h3 className="font-medium text-[#6ddec0]">Email</h3>
-                <div className="bg-[#213135] text-base px-4 py-2 rounded-lg border border-white/20">
+                <div className="bg-[#213135] text-base px-4 py-2 rounded-lg border border-white/20 w-full">
                   {currUser?.email}
                 </div>
               </div>
@@ -325,7 +332,7 @@ const ProfilePage = () => {
                 </div>
                 <div className="my-6 bg-white/20 h-[0.2px] max-2xl:my-2"></div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-4">
                   {pets.map((pet) => (
                     <div
                       key={pet._id || pet.id || pet.petName}
@@ -333,7 +340,7 @@ const ProfilePage = () => {
                         highlightedPet === pet.petName
                           ? "border-[#fb7a61] shadow-[0_0_1rem_#fb7a61]"
                           : "border-[#3b5055]"
-                      } bg-[#213135] text-sm relative hover:border-[#6ddec0] duration-400`}
+                      } bg-[#213135] text-sm relative hover:border-[#6ddec0] duration-400 min-w-50`}
                     >
                       {manage && (
                         <div className="flex justify-end right-2 top-2 absolute mt-3 gap-2">
@@ -673,7 +680,7 @@ const ProfilePage = () => {
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
 

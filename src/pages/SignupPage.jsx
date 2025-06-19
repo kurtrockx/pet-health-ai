@@ -1,12 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import sidelogo from "../assets/sidelogo.png";
 import catMascot from "../assets/Catmascot.png";
 import eyeOpen from "../assets/eye.png";
 import eyeClose from "../assets/eye-off.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../components/css/SignUp.css";
 
 export default function SignupPage() {
+
+    const navigate = useNavigate();
+
+    const currUser = localStorage.getItem("user");
+    useEffect(() => {
+      if (currUser) navigate("/home");
+    }, [currUser, navigate]);
+  
+  
   const [formData, setFormData] = useState({
     lastName: "",
     firstName: "",

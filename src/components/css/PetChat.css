@@ -5,8 +5,8 @@ body {
   color: #ffffff;
 }
 #root {
+  min-width: 100dvw;
   max-width: 100dvw;
-  max-height: 100dvh;
 }
 .chat-body {
   width: 100%;
