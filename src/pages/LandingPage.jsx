@@ -50,6 +50,12 @@ export default function LandingPage() {
               >
                 Explore Features
               </a>
+              <Link
+                to={"/signin"}
+                className="bg-[#f6b47c] text-black px-4 py-3 rounded-2xl shadow-[0_0_6px_#f6b47c] ml-4 hover:bg-[#f6b47c] hover:text-black cursor-pointer hover:brightness-90"
+              >
+                Sign In
+              </Link>
             </li>
           </ul>
         </nav>
