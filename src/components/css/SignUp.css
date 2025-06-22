@@ -20,7 +20,7 @@ body {
 
 .container {
   display: flex;
-  min-width: 90vw;
+  min-width: 105vw;
   height: 100vh;
   border-radius: 8px;
 }
@@ -49,6 +49,7 @@ body {
 .logo h1 {
   font-size: 1.2rem;
   color: var(--primary-color);
+  min-width: max-content;
 }
 
 .welcome-content {
@@ -61,12 +62,15 @@ body {
   font-size: 2.5rem;
   color: var(--secondary-color);
   margin-bottom: 20px;
+  font-weight: bold;
 }
 
 .welcome-content p {
+  max-width: 90%;
   font-size: 0.9rem;
   line-height: 1.6;
   margin-bottom: 30px;
+  text-align: justify;
 }
 
 .mascot {
@@ -74,6 +78,7 @@ body {
   display: flex;
   align-items: flex-end;
   justify-content: right;
+  animation: none;
 }
 
 .mascot img {
@@ -98,7 +103,6 @@ body {
     max-width: 100%;
   }
 }
-
 
 .form-container {
   max-width: 750px;
