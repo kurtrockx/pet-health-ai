@@ -6,8 +6,35 @@ import eyeClose from "../assets/eye-off.png";
 import { Link, useNavigate } from "react-router-dom";
 import "../components/css/SignUp.css";
 
+const terms = {
+  title: "Terms & Conditions",
+  message: [
+    "By using PetHealth Helper, you agree to the following terms and conditions:",
+    "1. PetHealth Helper is an AI-powered assistant designed to provide basic pet health information and first-aid guidance for minor pet health concerns.",
+    "2. The information provided through our service is for general informational purposes only and is not intended to replace professional veterinary advice, diagnosis, or treatment.",
+    "3. Always consult with a qualified veterinarian regarding any questions or concerns about your pet's health condition.",
+    "4. PetHealth Helper is not liable for any decisions made based on the information provided through our service.",
+    "5. Your personal information will be handled in accordance with our Privacy Policy.",
+  ],
+};
+
+console.log(terms.message);
+const privacy = {
+  title: "Privacy Notice",
+  message: [
+    "PetHealth Helper is committed to protecting your privacy:",
+    "1. We collect personal information such as your name, email address, and information about your pets to provide and improve our service.",
+    "2. Your information is stored securely and will not be shared with third parties without your consent, except as required by law.",
+    "3. We use cookies and similar technologies to enhance your experience and analyze usage patterns.",
+    "4. You have the right to access, correct, or delete your personal information at any time.",
+    "5. By using PetHealth Helper, you consent to the collection and use of information as described in this Privacy Policy.",
+  ],
+};
+
 export default function SignupPage() {
   const navigate = useNavigate();
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalContent, setModalContent] = useState("");
 
   const currUser = localStorage.getItem("user");
   useEffect(() => {
@@ -71,7 +98,7 @@ export default function SignupPage() {
 
     if (!formData.termsAccepted || !formData.privacyAccepted) {
       alert(
-        "You must accept the Terms and Services and Privacy Policy to continue."
+        "You must accept the Terms and Conditions and Privacy Policy to continue."
       );
       return;
     }
@@ -309,7 +336,16 @@ export default function SignupPage() {
                   required
                 />
                 <label className="text-[12px] text-[#555] max-2xl:text-xs ">
-                  I agree to the <a href="/terms">Terms and Services</a>.
+                  I agree to the{" "}
+                  <a
+                    h
+                    onClick={() => {
+                      setModalOpen(true), setModalContent(terms);
+                    }}
+                  >
+                    Terms and Conditions
+                  </a>
+                  .
                 </label>
               </div>
               <div className="checkbox">
@@ -322,7 +358,15 @@ export default function SignupPage() {
                   required
                 />
                 <label className="text-[12px] text-[#555] max-2xl:text-xs ">
-                  I agree to the <a href="/privacy">Privacy Policy</a>.
+                  I agree to the{" "}
+                  <a
+                    onClick={() => {
+                      setModalOpen(true), setModalContent(privacy);
+                    }}
+                  >
+                    Privacy Policy
+                  </a>
+                  .
                 </label>
               </div>
             </div>
@@ -335,6 +379,28 @@ export default function SignupPage() {
           </form>
         </div>
       </div>
+      {modalOpen && (
+        <div className="fixed inset-0 min-w-screen min-h-screen overflow-hidden bg-black/50 z-100 flex justify-center items-center">
+          <div className="max-w-[50vw] flex flex-col gap-4 max-h-[80vh] bg-white text-black absolute aspect-square py-8 px-6 rounded-2xl">
+            <div
+              className="absolute top-7.5 right-8 cursor-pointer"
+              onClick={() => {
+                setModalOpen(false);
+              }}
+            >
+              ✖
+            </div>
+            <h1 className="font-bold text-2xl text-[#56938a] text-center">
+              {modalContent.title}
+            </h1>
+            {modalContent?.message.map((msg) => {
+              return (
+                <p className="text-sm text-[#535353] text-justify">{msg}</p>
+              );
+            })}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
