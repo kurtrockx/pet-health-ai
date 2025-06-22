@@ -7,15 +7,13 @@ import { Link, useNavigate } from "react-router-dom";
 import "../components/css/SignUp.css";
 
 export default function SignupPage() {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
+  const currUser = localStorage.getItem("user");
+  useEffect(() => {
+    if (currUser) navigate("/home");
+  }, [currUser, navigate]);
 
-    const currUser = localStorage.getItem("user");
-    useEffect(() => {
-      if (currUser) navigate("/home");
-    }, [currUser, navigate]);
-  
-  
   const [formData, setFormData] = useState({
     lastName: "",
     firstName: "",
@@ -110,7 +108,7 @@ export default function SignupPage() {
     <div className="container">
       {/* Left Section */}
       <div className="left-section">
-        <div className="logo relative -top-10">
+        <div className="logo relative">
           <img src={sidelogo} alt="PetHealth Helper" />
           <h1 className="font-bold">PETHEALTH HELPER</h1>
         </div>
@@ -123,7 +121,7 @@ export default function SignupPage() {
             concerns. Always consult a professional. Enjoy exploring our
             features!
           </p>
-          <div className="mascot fixed bottom-0">
+          <div className="mascot absolute bottom-0">
             <img src={catMascot} alt="Cat Mascot" />
           </div>
         </div>
@@ -136,7 +134,10 @@ export default function SignupPage() {
           <form id="signupForm" onSubmit={handleSubmit}>
             <div className="form-row">
               <div className="form-group">
-                <label className="text-[12px] text-[#555] max-2xl:text-xs " htmlFor="lastName">
+                <label
+                  className="text-[12px] text-[#555] max-2xl:text-xs "
+                  htmlFor="lastName"
+                >
                   Last Name*
                 </label>
                 <input
@@ -150,7 +151,10 @@ export default function SignupPage() {
                 />
               </div>
               <div className="form-group">
-                <label className="text-[12px] text-[#555] max-2xl:text-xs " htmlFor="firstName">
+                <label
+                  className="text-[12px] text-[#555] max-2xl:text-xs "
+                  htmlFor="firstName"
+                >
                   First Name*
                 </label>
                 <input
@@ -164,7 +168,10 @@ export default function SignupPage() {
                 />
               </div>
               <div className="form-group">
-                <label className="text-[12px] text-[#555] max-2xl:text-xs " htmlFor="middleName">
+                <label
+                  className="text-[12px] text-[#555] max-2xl:text-xs "
+                  htmlFor="middleName"
+                >
                   Middle Name
                 </label>
                 <input
@@ -177,7 +184,10 @@ export default function SignupPage() {
                 />
               </div>
               <div className="form-group">
-                <label className="text-[12px] text-[#555] max-2xl:text-xs " htmlFor="ext">
+                <label
+                  className="text-[12px] text-[#555] max-2xl:text-xs "
+                  htmlFor="ext"
+                >
                   Ext.
                 </label>
                 <select
@@ -198,7 +208,10 @@ export default function SignupPage() {
               </div>
             </div>
             <div className="form-group">
-              <label className="text-[12px] text-[#555] max-2xl:text-xs " htmlFor="email">
+              <label
+                className="text-[12px] text-[#555] max-2xl:text-xs "
+                htmlFor="email"
+              >
                 Email Address*
               </label>
               <input
@@ -212,7 +225,10 @@ export default function SignupPage() {
               />
             </div>
             <div className="form-group">
-              <label className="text-[12px] text-[#555] max-2xl:text-xs " htmlFor="username">
+              <label
+                className="text-[12px] text-[#555] max-2xl:text-xs "
+                htmlFor="username"
+              >
                 Username*
               </label>
               <input
@@ -226,7 +242,10 @@ export default function SignupPage() {
               />
             </div>
             <div className="form-group">
-              <label className="text-[12px] text-[#555] max-2xl:text-xs " htmlFor="password">
+              <label
+                className="text-[12px] text-[#555] max-2xl:text-xs "
+                htmlFor="password"
+              >
                 Password*
               </label>
               <div className="password-container">
