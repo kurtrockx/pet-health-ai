@@ -258,16 +258,16 @@ export default function SignupPage() {
                   onChange={handleChange}
                   required
                 />
-                <button
+                <div
                   type="button"
-                  className="password-toggle"
+                  className="password-toggle-signup"
                   onClick={() => togglePasswordVisibility("password")}
                 >
                   <img
                     src={passwordVisible ? eyeClose : eyeOpen}
                     alt={passwordVisible ? "Hide" : "Show"}
                   />
-                </button>
+                </div>
               </div>
             </div>
             <div className="form-group"></div>
@@ -289,7 +289,7 @@ export default function SignupPage() {
               />
               <button
                 type="button"
-                className="password-toggle"
+                className="password-toggle-signup"
                 onClick={() => togglePasswordVisibility("confirmPassword")}
               >
                 <img

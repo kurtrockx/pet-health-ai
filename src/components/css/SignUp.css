@@ -383,6 +383,51 @@ input:focus {
   color: var(--primary-color);
 }
 
+.password-toggle-signup {
+  position: absolute;
+  right: 10px;
+  top: 10%;
+  cursor: pointer;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  z-index: 10;
+}
+
+.password-toggle-signup img {
+  min-width: 18px;
+  height: 18px;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.password-toggle-signup:hover img {
+  opacity: 1;
+}
+
+.password-toggle-signup.hidden img.eye-close {
+  display: inline;
+}
+
+.password-toggle-signup.hidden img.eye-open {
+  display: none;
+}
+
+.password-toggle-signup.visible img.eye-close {
+  display: none;
+}
+
+.password-toggle-signup.visible img.eye-open {
+  display: inline;
+}
+
+
 /* Modal Button Styles */
 .modal-button-container {
   display: flex;

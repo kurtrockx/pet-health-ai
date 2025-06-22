@@ -48,11 +48,11 @@ export default function SigninPage() {
     <div className="signin-container">
       <div className="container">
         <div className="login-form">
-          <div className="logo">
+          <div className="logo-signin">
             <img
               src={petHealthLogo}
               alt="PetHealth Logo"
-              className="min-w-48 min-h-48 mb-16"
+              className="min-w-48 min-h-48"
             />
           </div>
           <form id="loginForm" onSubmit={handleSubmit}>
