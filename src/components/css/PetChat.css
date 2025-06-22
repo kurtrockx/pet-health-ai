@@ -206,7 +206,7 @@ body {
   flex-direction: column;
   max-width: 11000px;
   margin: 0 auto;
-  padding: 2rem 20px;
+  padding: 2rem 20px 0;
   justify-content: space-between;
   height: 100%; /* Full height */
   overflow: hidden; /* Prevent chat container scrolling */
