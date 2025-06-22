@@ -1,4 +1,10 @@
-import { BrowserRouter, Route, Routes, useLocation, Navigate } from "react-router-dom";
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  useLocation,
+  Navigate,
+} from "react-router-dom";
 import { useEffect, useState } from "react";
 import HomePage from "./pages/HomePage";
 import SigninPage from "./pages/SigninPage";
@@ -8,6 +14,7 @@ import LandingPage from "./pages/LandingPage";
 import ChatPage from "./pages/ChatPage";
 import ProfilePage from "./pages/ProfilePage";
 import GuidancePage from "./pages/GuidancePage";
+import ForgotPage from "./pages/ForgotPage";
 
 function PageTitleSetter() {
   const location = useLocation();
@@ -32,6 +39,7 @@ function App() {
         <Route path="/Chat" element={<ChatPage />} />
         <Route path="/Profile" element={<ProfilePage />} />
         <Route path="/Guidance" element={<GuidancePage />} />
+        <Route path="/Forgot" element={<ForgotPage />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>

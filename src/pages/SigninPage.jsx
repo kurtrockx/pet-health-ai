@@ -93,7 +93,7 @@ export default function SigninPage() {
               </div>
             </div>
             <div className="forgot-password">
-              <Link to="/ForgotPassword">Forgot Password?</Link>
+              <Link to="/forgot">Forgot Password?</Link>
             </div>
             <button type="submit" id="login-btn">
               Sign In
