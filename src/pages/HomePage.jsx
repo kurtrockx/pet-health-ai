@@ -7,7 +7,7 @@ export default function HomePage() {
   const currUser = JSON.parse(localStorage.getItem("user"));
 
   return (
-    <div className="overflow-y-hidden">
+    <div className="overflow-y-hidden max-h-dvh">
       <Navbar />
       <main className="main-content">
         <div className="left-side">
