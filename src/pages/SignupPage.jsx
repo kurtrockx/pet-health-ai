@@ -130,7 +130,7 @@ export default function SignupPage() {
       {/* Right Section */}
       <div className="right-section">
         <div className="form-container">
-          <h2>Create Account</h2>
+          <h2 className="relative top-2.5 font-bold">Create Account</h2>
           <form id="signupForm" onSubmit={handleSubmit}>
             <div className="form-row">
               <div className="form-group">
@@ -329,7 +329,7 @@ export default function SignupPage() {
             <button type="submit" className="btn-primary">
               Continue
             </button>
-            <div className="login-link">
+            <div className="login-link relative bottom-3.5">
               Already have account? <Link to={"/signin"}>Log in</Link>
             </div>
           </form>

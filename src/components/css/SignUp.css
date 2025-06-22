@@ -73,7 +73,7 @@ body {
 }
 
 .welcome-content p {
-  max-width: 80%;
+  max-width: 85%;
   font-size: 0.8rem;
   line-height: 1.6;
   margin-bottom: 30px;
@@ -100,9 +100,10 @@ body {
 .right-section {
   background-color: white;
   min-width: 50%;
-  padding: 0 20px;
+  padding: 5px 20px;
   overflow-y: auto;
   margin-right: 4rem;
+  border-radius: 1rem;
 }
 @media screen and (max-width: 1400px) {
   .right-section {
@@ -142,6 +143,9 @@ body {
 #ext {
   min-width: 100%;
   height: 60%;
+  font-size: 0.9rem;
+  border: 1px solid #cccccc;
+  border-radius: 0.25rem;
 }
 
 .form-group.small {
@@ -426,7 +430,6 @@ input:focus {
 .password-toggle-signup.visible img.eye-open {
   display: inline;
 }
-
 
 /* Modal Button Styles */
 .modal-button-container {
