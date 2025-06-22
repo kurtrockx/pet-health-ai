@@ -52,7 +52,7 @@ export default function LandingPage() {
               </a>
               <Link
                 to={"/signin"}
-                className="bg-[#f6b47c] text-black px-4 py-3 rounded-2xl shadow-[0_0_6px_#f6b47c] ml-4 hover:bg-[#f6b47c] hover:text-black cursor-pointer hover:brightness-90"
+                className="text-white text-sm hover:bg-[#294344] hover:text-[#59cabc] px-3 py-1.5 rounded-2xl transition"
               >
                 Sign In
               </Link>
@@ -66,7 +66,7 @@ export default function LandingPage() {
           className="flex relative items-center justify-between mt-200 gap-20"
           id="home"
         >
-          <div className="flex flex-col gap-4 relative top-40">
+          <div className="flex flex-col gap-4 relative top-20">
             <h1 className="text-[#62ddbe] text-3xl font-bold w-max">
               Your AI-Powered Pet Care Companion
             </h1>
@@ -78,12 +78,12 @@ export default function LandingPage() {
             <div className="flex gap-4">
               <Link
                 to={"/chat"}
-                className="bg-[#f6b47c] text-black px-4 py-3 rounded-2xl shadow-[0_0_20px_#f6b47c] hover:bg-[#f6b47c] hover:text-black cursor-pointer duration-200 hover:-translate-y-1"
+                className="bg-[#f6b47c] text-black px-4 py-3 rounded-4xl hover:shadow-[0_0_10px_#f6b47c] hover:bg-[#f6b47c] hover:text-black cursor-pointer duration-200 hover:-translate-y-1"
               >
                 Chat Now
               </Link>
               <a
-                className="border-2 border-[#f6b47c] flex justify-center items-center px-4 py-3 text-[#f6b47c] rounded-2xl duration-200 hover:-translate-y-1 cursor-pointer hover:bg-[#f6b47c] hover:text-black"
+                className="border-2 border-[#f6b47c] flex justify-center items-center px-4 py-3 text-[#f6b47c] rounded-4xl duration-200 hover:-translate-y-1 cursor-pointer hover:bg-[#f6b47c] hover:text-black"
                 href="#explore"
               >
                 Explore Features
@@ -94,7 +94,7 @@ export default function LandingPage() {
             <img
               src={welcomePagePic}
               alt="PetHealth AI Hero Image"
-              className="max-w-2xl mt-40"
+              className="max-w-xl mt-40 relative right-5"
             />
           </div>
         </main>

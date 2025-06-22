@@ -44,27 +44,29 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
-            <Link
-              to="/profile"
-              className="text-white text-sm hover:bg-[#294344] hover:text-[#59cabc] px-3 py-1.5 rounded-2xl transition"
-            >
-              Profile
-            </Link>
+            {loggedInUser && (
+              <Link
+                to="/profile"
+                className="text-white text-sm hover:bg-[#294344] hover:text-[#59cabc] px-3 py-1.5 rounded-2xl transition"
+              >
+                Profile
+              </Link>
+            )}
           </li>
           {loggedInUser ? (
-            <button
+            <div
               onClick={handleLogout}
-              className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition"
+              className="text-black px-4 py-2 rounded-3xl bg-[#6ddec0] transition cursor-pointer duration-200 hover:brightness-90 text-sm"
             >
               Logout
-            </button>
+            </div>
           ) : (
-            <button
+            <div
               onClick={gotoSignin}
-              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
+              className="text-black px-4 py-2 rounded-3xl bg-[#6ddec0] transition cursor-pointer duration-200 hover:brightness-90 text-sm"
             >
               Sign In
-            </button>
+            </div>
           )}
         </ul>
       </nav>

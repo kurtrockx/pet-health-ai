@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../components/css/QuickGuidance.css"; // Optional, if you have styling
 import Navbar from "../components/NavBar";
+import noResultsPng from '../assets/noresults.png'
 
 const faqData = [
   {
@@ -488,7 +489,7 @@ const GuidancePage = () => {
   };
 
   return (
-    <div className="max-h-[100dvh]">
+    <div className="max-h-[100dvh] overflow-x-hidden">
       <Navbar />
       <div className="faq-section">
         <div className="faq-header">
@@ -545,12 +546,7 @@ const GuidancePage = () => {
             ))
           ) : (
             <div className="no-results" id="noResults">
-              <img
-                src="your-image-path.png"
-                alt="No Results"
-                className="no-results-image"
-              />
-              <p>No results found.</p>
+              <img src={noResultsPng} className="mx-auto min-w-72 max-w-72" />
             </div>
           )}
         </div>

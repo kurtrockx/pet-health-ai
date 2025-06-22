@@ -182,51 +182,6 @@ input:focus {
   width: 100%;
 }
 
-.password-toggle {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  color: #666;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  background-color: transparent;
-  border: none;
-  outline: none;
-  z-index: 10;
-}
-
-.password-toggle img {
-  min-width: 18px;
-  height: 18px;
-  opacity: 0.7;
-  transition: opacity 0.2s;
-}
-
-.password-toggle:hover img {
-  opacity: 1;
-}
-
-.password-toggle.hidden img.eye-close {
-  display: inline;
-}
-
-.password-toggle.hidden img.eye-open {
-  display: none;
-}
-
-.password-toggle.visible img.eye-close {
-  display: none;
-}
-
-.password-toggle.visible img.eye-open {
-  display: inline;
-}
-
 /* Fix input padding to avoid text overlapping with icon */
 .password-container input[type="password"],
 .password-container input[type="text"] {

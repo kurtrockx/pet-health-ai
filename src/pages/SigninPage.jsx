@@ -49,7 +49,11 @@ export default function SigninPage() {
       <div className="container">
         <div className="login-form">
           <div className="logo">
-            <img src={petHealthLogo} alt="PetHealth Logo" />
+            <img
+              src={petHealthLogo}
+              alt="PetHealth Logo"
+              className="min-w-48 min-h-48 mb-16"
+            />
           </div>
           <form id="loginForm" onSubmit={handleSubmit}>
             <div className="form-group">
@@ -62,7 +66,6 @@ export default function SigninPage() {
                 required
                 className="bg-white text-black"
               />
-              <span className="error-message" id="username-error"></span>
             </div>
             <div className="form-group">
               <p>Password</p>
@@ -88,7 +91,6 @@ export default function SigninPage() {
                   />
                 </button>
               </div>
-              <span className="error-message" id="password-error"></span>
             </div>
             <div className="forgot-password">
               <Link to="/ForgotPassword">Forgot Password?</Link>
@@ -96,12 +98,12 @@ export default function SigninPage() {
             <button type="submit" id="login-btn">
               Sign In
             </button>
-            <div className="signup-link">
+            <div className="signup-link signup-dont">
               <span>Don't have an account? </span>
               <Link to="/signup">Sign Up!</Link>
             </div>
             <div className="signup-link">
-              <Link to="/" className="">
+              <Link to="/" className="text-xs">
                 Go Back to Landing Page?
               </Link>
             </div>
