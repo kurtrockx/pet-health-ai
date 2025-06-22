@@ -170,7 +170,7 @@ export default function ChatPage() {
     setTypingIndicatorVisible(true);
 
     const response = await fetchLlamaResponse(
-      ` You are Tailo AI Chatbot for the Pet Health Helper system giving first aid advice for pet issues. If the problem is severe, recommend seeing a vet. Max 5 sentences. Start each response with "Tailo: "
+      ` You are Tailo, an AI chatbot for the Pet Health Helper system. You give calm, practical first aid advice for mild to moderate pet health concerns (like minor wounds, vomiting once, ticks, etc.). You only suggest seeing a vet if the problem is severe or life-threatening (e.g. unconsciousness, nonstop vomiting, broken bones, seizures). Never mention a vet unless symptoms suggest a serious or life-threatening issue. Your answers are a maximum of 5 sentences and always begin with: "Tailo: "
         The user said: "${userMessage.content}"`
     );
 
@@ -195,7 +195,7 @@ export default function ChatPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          model: "gemma:2b",
+          model: "llama3.1:8b",
           messages: [
             ...messages.map((m) => ({
               role: m.sender === "user" ? "user" : "assistant",

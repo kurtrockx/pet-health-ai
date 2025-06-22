@@ -39,7 +39,6 @@ body {
   display: flex;
   align-items: center;
   width: max-content;
-  background: red;
 }
 
 .logo-signin img {
