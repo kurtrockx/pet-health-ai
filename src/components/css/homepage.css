@@ -81,7 +81,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 50px 60px;
+  padding: 0 60px;
   gap: 40px;
   min-height: calc(100vh - 80px);
 }
@@ -89,7 +89,6 @@ body {
 /* Chat Section */
 .left-side {
   max-width: 600px;
-  margin-left: 300px;
   flex: 1;
 }
 
