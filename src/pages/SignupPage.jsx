@@ -110,9 +110,9 @@ export default function SignupPage() {
     <div className="container">
       {/* Left Section */}
       <div className="left-section">
-        <div className="logo">
+        <div className="logo relative -top-10">
           <img src={sidelogo} alt="PetHealth Helper" />
-          <h1>PETHEALTH HELPER</h1>
+          <h1 className="font-bold">PETHEALTH HELPER</h1>
         </div>
         <div className="welcome-content">
           <h2>Sign Up!</h2>
@@ -123,7 +123,7 @@ export default function SignupPage() {
             concerns. Always consult a professional. Enjoy exploring our
             features!
           </p>
-          <div className="mascot">
+          <div className="mascot fixed bottom-0">
             <img src={catMascot} alt="Cat Mascot" />
           </div>
         </div>
@@ -140,7 +140,7 @@ export default function SignupPage() {
                   Last Name*
                 </label>
                 <input
-                  className="border border-[#ccc]"
+                  className="border border-[#ccc] max-h-8"
                   type="text"
                   id="lastName"
                   name="lastName"
@@ -154,7 +154,7 @@ export default function SignupPage() {
                   First Name*
                 </label>
                 <input
-                  className="border border-[#ccc]"
+                  className="border border-[#ccc] max-h-8"
                   type="text"
                   id="firstName"
                   name="firstName"
@@ -168,7 +168,7 @@ export default function SignupPage() {
                   Middle Name
                 </label>
                 <input
-                  className="border border-[#ccc]"
+                  className="border border-[#ccc] max-h-8"
                   type="text"
                   id="middleName"
                   name="middleName"
@@ -208,7 +208,7 @@ export default function SignupPage() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="border border-[#ccc]"
+                className="border border-[#ccc] max-h-8"
               />
             </div>
             <div className="form-group">
@@ -222,7 +222,7 @@ export default function SignupPage() {
                 value={formData.username}
                 onChange={handleChange}
                 required
-                className="border border-[#ccc]"
+                className="border border-[#ccc] max-h-8"
               />
             </div>
             <div className="form-group">
@@ -231,7 +231,7 @@ export default function SignupPage() {
               </label>
               <div className="password-container">
                 <input
-                  className="border border-[#ccc]"
+                  className="border border-[#ccc] max-h-8"
                   type={passwordVisible ? "text" : "password"}
                   id="password"
                   name="password"
@@ -266,7 +266,7 @@ export default function SignupPage() {
                 value={formData.confirmPassword}
                 onChange={handleChange}
                 required
-                className="border border-[#ccc] text-black"
+                className="border border-[#ccc] max-h-8 text-black"
               />
               <button
                 type="button"
@@ -282,7 +282,7 @@ export default function SignupPage() {
             <div className="checkbox-group">
               <div className="checkbox">
                 <input
-                  className="border border-[#ccc]"
+                  className="border border-[#ccc] max-h-8"
                   type="checkbox"
                   name="termsAccepted"
                   checked={formData.termsAccepted}
@@ -295,7 +295,7 @@ export default function SignupPage() {
               </div>
               <div className="checkbox">
                 <input
-                  className="border border-[#ccc]"
+                  className="border border-[#ccc] max-h-8"
                   type="checkbox"
                   name="privacyAccepted"
                   checked={formData.privacyAccepted}
