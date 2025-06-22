@@ -74,7 +74,7 @@ body {
 
 .welcome-content p {
   max-width: 80%;
-  font-size: 0.80rem;
+  font-size: 0.8rem;
   line-height: 1.6;
   margin-bottom: 30px;
   text-align: justify;
@@ -91,7 +91,7 @@ body {
 .mascot img {
   position: relative;
   left: 70%;
-  min-width: 65%;
+  min-width: 95%;
   max-width: 100%;
   max-height: 450px;
 }
