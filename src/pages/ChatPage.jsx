@@ -150,9 +150,10 @@ export default function ChatPage() {
     const input = preset || messageInput.trim();
     if (!input) return;
 
-    // Ensure chat ID and state are set before adding message
+    // START NEW CHAT IF NONE EXISTS
     if (!chatStarted) {
-      setCurrentChatId(`chat_${Date.now()}`);
+      const newChatId = `chat_${Date.now()}`;
+      setCurrentChatId(newChatId);
       setChatStarted(true);
     }
 
@@ -170,8 +171,8 @@ export default function ChatPage() {
     setTypingIndicatorVisible(true);
 
     const response = await fetchLlamaResponse(
-      `You are Tailo, an AI chatbot for the Pet Health Helper system. You give calm, practical first aid advice for mild to moderate pet health concerns (like minor wounds, vomiting once, ticks, etc.). You only suggest seeing a vet if the problem is severe or life-threatening (e.g. unconsciousness, nonstop vomiting, broken bones, seizures). Never mention going to a vet unless symptoms suggest a serious or life-threatening issue. Your answers are a maximum of 10 sentences and always begin with: "Tailo: "
-      The user said: "${userMessage.content}"`
+      `You are Tailo, an AI chatbot for the Pet Health Helper system... 
+    The user said: "${userMessage.content}"`
     );
 
     if (response && response.trim() !== "") {
